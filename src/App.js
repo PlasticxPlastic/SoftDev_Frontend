@@ -1,12 +1,11 @@
-import './App.css';
+import React from "react";
+import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
-import Home from './pages';
-import About from './pages/About';
-import Contact from './pages/contact';
-import SignUp from './pages/signup';
-import SignIn from './pages/signin';
-import ShopPage from './pages/ShopPage';
+import Home from "./pages";
+import SignUp from "./pages/signup";
+import SignIn from "./pages/signin";
+import CreateSellOrder from "./pages/CreateSellOrder"; // Import the CreateSellOrder component
 
 function App() {
   return (
@@ -14,11 +13,10 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/aboutss" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/about" element={<ShopPage />} />
+        {/* Add a route for the CreateSellOrder component */}
+        <Route path="/create-sell-order" element={<CreateSellOrder />} />
       </Routes>
     </BrowserRouter>
   );

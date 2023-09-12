@@ -1,0 +1,147 @@
+.create-sell-order {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .image-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .upload-box {
+    width: 700px;
+    height: 300px;
+    background-color: #d9d9d9;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .upload-box:hover {
+    background-color: #c9c9c9;
+  }
+  
+  input[type="file"] {
+    display: none;
+  }
+  
+  .upload-text {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .order-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Style for other input elements and labels */
+  .label-input-container {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+  }
+  
+  /* Style the "Order Name" label and input to be above each other */
+  .order-name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0;
+  }
+  
+  .order-name label {
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  
+  .order-name .input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .order-name input {
+    width: 700px;
+    height: 30px;
+    background-color: #d9d9d9;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 14px;
+  }
+  
+  /* Style the "Number of Hero," "Number of Skin," "Rank," and "Winrate" elements */
+  .order-details {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .detail {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0;
+  }
+  
+  .detail label {
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  
+  .detail .input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .detail input,
+  .detail select {
+    width: 135px; /* Set the width to a fixed value */
+    height: 36px;
+    background-color: #d9d9d9;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  
+  .confirm-button {
+    background-color: #5ae544;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .confirm-button:hover {
+    background-color: #4ac038;
+  }
+  
+  /* Media queries for responsiveness */
+  /* Example: */
+  @media screen and (max-width: 768px) {
+    .image-upload {
+      /* Adjust styles for smaller screens */
+    }
+  
+    /* Add more responsive styles as needed */
+  }
+  
