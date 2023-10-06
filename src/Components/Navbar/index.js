@@ -30,7 +30,7 @@ const Navbar = () => {
                 <div className="tree">
                  <div className="end">
                     <div className="content-2">
-                        <Link to="/">   {/* ใส่ page ที่จะไป */}
+                        <Link to="/about">   {/* ใส่ page ที่จะไป */}
                             <img className="logobtn" src="/image/frame.png"></img>
                             <img className="iconno" src="/image/Notifications.png"></img>
                         </Link>
@@ -42,13 +42,13 @@ const Navbar = () => {
                         </Link>
                     </div>
                     <div className="content-4">
-                        <Link to="/">   {/* ใส่ page ที่จะไป */}
+                        <Link to="/signup">   {/* ใส่ page ที่จะไป */}
                             <img className="logobtn" src="/image/frame.png"></img>
                             <img className="iconno" src="/image/image2.png"></img>
                         </Link>
                     </div>
                     <div className="content-5">
-                        <Link to="/">   {/* ใส่ page ที่จะไป */}
+                        <Link to="/signin">   {/* ใส่ page ที่จะไป */}
                             <img className="logobtn_1" src="/image/frame_1.png"></img>
                             <img className="iconnoo" src="/image/login.png"></img>
                         </Link>
