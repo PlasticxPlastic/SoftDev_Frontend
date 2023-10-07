@@ -1,16 +1,77 @@
-.ROV-logo{
-  /* db5db10e92387724ab25f92a8c1e6e9f 2 */
+
+
+.cod .ROV-logo img{
+  /* db5db10e92387724ab25f92a8c1e6e9f 1 */
 
 position: absolute;
 width: 136px;
 height: 192px;
 left: 97px;
-top: 152px;
+top: 108px;
 
 
 }
 
-.image-container {
+.cod .button1 {
+  /* Ellipse 5 */
+
+position: absolute;
+width: 27px;
+height: 25px;
+left: 896px;
+top: 540px;
+
+background: #8E8E8E;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 15px;
+z-index: 1;
+border: 1px solid #8E8E8E;
+cursor: pointer;
+}
+
+.cod .button2{
+  /* Ellipse 6 */
+
+position: absolute;
+width: 27px;
+height: 25px;
+left: 940px;
+top: 540px;
+
+background: #D7D7D7;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 15px;
+z-index: 1;
+border: 1px solid #D7D7D7;
+cursor: pointer;
+}
+
+.cod .button3{
+  /* Ellipse 7 */
+
+position: absolute;
+width: 27px;
+height: 25px;
+left: 984px;
+top: 540px;
+
+background: #D2D2D2;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 15px;
+border: 1px solid #D2D2D2;
+cursor: pointer;
+z-index: 1;
+}
+
+.button.active {
+  background-color: #8E8E8E; /* Active background color */
+}
+
+.button.inactive {
+  background-color: red; /* Inactive background color (red for all) */
+}
+
+.cod .upload-box{
   /* อัปรูป */
 
 position: absolute;
@@ -23,16 +84,62 @@ background: #D9D9D9;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 15px;
 
+
 }
 
-.price{
+.upload-box:hover {
+  background-color: #c9c9c9;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.cod .detail-name label{
+  /* ชื่อสินค้า */
+
+position: absolute;
+width: 178px;
+height: 42px;
+left: 937px;
+top: 601px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 15px;
+
+color: #000000;
+
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+.cod .detail-name input{
+  /* Rectangle 20 */
+
+position: absolute;
+width: 576px;
+height: 36px;
+left: 666px;
+top: 620px;
+font-size: 20px;
+
+background: #D9D9D9;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 15px;
+outline: none;
+}
+
+.cod .detail-price label{
   /* ราคา */
 
 position: absolute;
 width: 178px;
 height: 42px;
 left: 1389px;
-top: 300px;
+top: 373px;
 
 font-family: 'Inter';
 font-style: normal;
@@ -42,11 +149,11 @@ line-height: 36px;
 
 color: #000000;
 
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 }
 
-.price-box{
+.cod .detail-price input{
   /* Rectangle 21 */
 
 box-sizing: border-box;
@@ -55,59 +162,24 @@ position: absolute;
 width: 257px;
 height: 84px;
 left: 1369px;
-top: 380px;
+top: 415px;
 
 background: #FAB40A;
-border: 1px solid #898989;
+border: 1px solid #FAB40A;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 20px;
-
+outline: none;
+font-size: 40px;
 }
 
-.show-name {
-/* ชื่อสินค้า */
-
-position: absolute;
-width: 178px;
-height: 42px;
-left: 937px;
-top: 580px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 15px;
-
-color: #000000;
-
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
-
-}
-
-.name-container{
-/* Rectangle 20 */
-
-position: absolute;
-width: 576px;
-height: 36px;
-left: 666px;
-top: 620px;
-
-background: #D9D9D9;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 15px;
-
-}
-
-.amount-hero{
-/* จำนวนฮีโร่ */
+.cod .detail-hero label{
+  /* จำนวนฮีโร่ */
 
 position: absolute;
 width: 178px;
 height: 42px;
 left: 582px;
-top: 670px;
+top: 679px;
 
 font-family: 'Inter';
 font-style: normal;
@@ -117,34 +189,35 @@ line-height: 15px;
 
 color: #000000;
 
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 }
 
-.amount-hero-box{
-/* Rectangle 4 */
+.cod .detail-hero input{
+  /* Rectangle 4 */
 
 position: absolute;
 width: 135px;
 height: 36px;
 left: 540px;
 top: 708px;
-
+font-size: 20px;
 background: #D9D9D9;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 15px;
-
-
+outline: none;
+border: 1px solid #D9D9D9;
+text-align: center;
 }
 
-.amount-skin{
+.cod .detail-skin label{
   /* จำนวนสกิน */
 
 position: absolute;
 width: 178px;
 height: 42px;
 left: 784px;
-top: 670px;
+top: 679px;
 
 font-family: 'Inter';
 font-style: normal;
@@ -154,12 +227,11 @@ line-height: 15px;
 
 color: #000000;
 
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
-
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 }
 
-.amount-skin-box{
+.cod .detail-skin input{
   /* Rectangle 6 */
 
 position: absolute;
@@ -167,21 +239,23 @@ width: 135px;
 height: 36px;
 left: 742px;
 top: 709px;
-
+font-size: 20px;
 background: #D9D9D9;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 15px;
-
+border: 1px solid #D9D9D9;
+text-align: center;
+outline: none;
 }
 
-.rank{
+.cod .detail-rank label{
   /* แรงก์ */
 
 position: absolute;
 width: 32px;
 height: 42px;
 left: 962px;
-top: 670px;
+top: 679px;
 
 font-family: 'Inter';
 font-style: normal;
@@ -191,11 +265,11 @@ line-height: 15px;
 
 color: #000000;
 
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 }
 
-.rank-box{
+.cod .detail-rank input{
   /* Rectangle 7 */
 
 position: absolute;
@@ -203,21 +277,23 @@ width: 135px;
 height: 36px;
 left: 913px;
 top: 708px;
-
+font-size: 20px;
 background: #D9D9D9;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 15px;
-
+border: 1px solid #D9D9D9;
+text-align: center;
+outline: none;
 }
 
-.winrate{
+.cod .detail-winRate label{
   /* วินเรท */
 
 position: absolute;
 width: 32px;
 height: 42px;
 left: 1129px;
-top: 670px;
+top: 682px;
 
 font-family: 'Inter';
 font-style: normal;
@@ -227,107 +303,35 @@ line-height: 15px;
 
 color: #000000;
 
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 }
-.winrate-box{
-/* Rectangle 8 */
+
+.cod .detail-winRate input{
+  /* Rectangle 8 */
 
 position: absolute;
 width: 135px;
 height: 36px;
 left: 1079px;
 top: 708px;
-
+font-size: 20px;
 background: #D9D9D9;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 15px;
-
+border: 1px solid #D9D9D9;
+text-align: center;
+outline: none;
 }
 
-.connecting{
-  /* การเชื่อมต่อ */
-
-position: absolute;
-width: 96px;
-height: 42px;
-left: 1284px;
-top: 670px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 15px;
-
-color: #000000;
-
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
-
-}
-
-.connecting-box{
-  /* Rectangle 9 */
-
-position: absolute;
-width: 135px;
-height: 36px;
-left: 1245px;
-top: 708px;
-
-background: #D9D9D9;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 15px;
-
-
-}
-
-.garena-logo{
-/* image 18 */
-
-position: absolute;
-width: 30px;
-height: 26px;
-left: 1260px;
-top: 713px;
-
-border-radius: 15px;
-
-}
-.facebook-logo{
-  /* image 18 */
-
-position: absolute;
-width: 30px;
-height: 26px;
-left: 1300px;
-top: 713px;
-
-border-radius: 15px;
-
-}
-
-.apple-logo{
-  /* Rectangle 12 */
-
-position: absolute;
-width: 30px;
-height: 26px;
-left: 1340px;
-top: 713px;
-
-border-radius: 15px;
-
-}
-
-.gold{
+.cod .detail-gold label{
   /* ทอง */
 
 position: absolute;
 width: 23px;
 height: 42px;
 left: 596px;
-top: 737px;
+top: 750px;
 
 font-family: 'Inter';
 font-style: normal;
@@ -337,33 +341,34 @@ line-height: 15px;
 
 color: #000000;
 
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 }
 
-.gold-box{
+.cod .detail-gold input{
   /* Rectangle 18 */
 
 position: absolute;
 width: 135px;
 height: 31px;
 left: 540px;
-top: 770px;
-
+top: 767px;
+font-size: 18px;
 background: rgba(250, 180, 10, 0.62);
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 15px;
-
+border: 1px solid rgba(250, 180, 10, 0.62);
+outline: none;
 }
 
-.red-diamond{
+.cod .detail-redDaimond label{
   /* เพชรแดง */
 
 position: absolute;
 width: 55px;
 height: 42px;
-left: 784px;
-top: 737px;
+left: 790px;
+top: 752px;
 
 font-family: 'Inter';
 font-style: normal;
@@ -373,32 +378,33 @@ line-height: 15px;
 
 color: #000000;
 
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 }
-.red-diamond-box{
+
+.cod .detail-redDaimond input{
   /* Rectangle 19 */
 
 position: absolute;
 width: 135px;
 height: 31px;
 left: 742px;
-top: 770px;
-
+top: 768px;
+font-size: 18px;
 background: rgba(247, 0, 0, 0.63);
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 15px;
-
+outline: none;
 }
 
-.red-marble{
+.cod .detail-redMarble label{
   /* ลูกแก้วแดง */
 
 position: absolute;
 width: 55px;
 height: 42px;
-left: 950px;
-top: 737px;
+left: 953px;
+top: 752px;
 
 font-family: 'Inter';
 font-style: normal;
@@ -408,36 +414,36 @@ line-height: 15px;
 
 color: #000000;
 
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 }
 
-.red-marble-box{
-  /* Rectangle 16 */
+.cod .detail-redMarble input{
+/* Rectangle 16 */
 
 box-sizing: border-box;
 
 position: absolute;
 width: 135px;
-height: 31px;
-left: 913px;
-top: 770px;
-
+height: 36px;
+left: 917px;
+top: 768px;
+font-size: 18px;
 background: rgba(247, 0, 0, 0.74);
-border: 1px solid #FCD167;
+border: 1px solid rgba(247, 0, 0, 0.74);
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 15px;
-
+outline: none;
 }
 
-.coupon{
+.cod .detail-coupon label{
   /* คูปอง */
 
 position: absolute;
 width: 55px;
 height: 42px;
 left: 1131px;
-top: 737px;
+top: 752px;
 
 font-family: 'Inter';
 font-style: normal;
@@ -447,53 +453,62 @@ line-height: 15px;
 
 color: #000000;
 
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 }
 
-.coupon-box{
+.cod .detail-coupon input{
   /* Rectangle 17 */
 
 position: absolute;
 width: 135px;
-height: 31px;
+height: 33px;
 left: 1079px;
-top: 770px;
-
+top: 768px;
+font-size: 18px;
 background: rgba(24, 119, 242, 0.78);
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 15px;
+border: 1px solid rgba(24, 119, 242, 0.78);
+outline: none;
+}
+
+.cod .detail-connect label{
+  /* การเชื่อมต่อ */
+
+position: absolute;
+width: 96px;
+height: 42px;
+left: 1275px;
+top: 676px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 15px;
+
+color: #000000;
+
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 }
 
-
-.profile-image{
-  /* Rectangle 23 */
+.cod .connect-box {
+  /* Rectangle 9 */
 
 position: absolute;
-width: 144px;
-height: 157px;
-left: 607px;
-top: 857px;
+width: 135px;
+height: 36px;
+left: 1238px;
+top: 703px;
 
 background: #D9D9D9;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 15px;
 
 }
 
-.profile-rating{
-  /* image 7 */
-
-position: absolute;
-width: 172px;
-height: 46px;
-left: 590px;
-top: 1014px;
-
-}
-
-.username{
+.cod .detail-username label{
   /* Username */
 
 position: absolute;
@@ -510,21 +525,51 @@ line-height: 15px;
 
 color: #000000;
 
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
 }
 
-.username-box{
+.cod .detail-username input{
   /* Rectangle 13 */
 
 position: absolute;
 width: 551px;
 height: 36px;
 left: 772px;
-top: 910px;
+top: 895px;
+font-size: 20px;
+background: #D9D9D9;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 15px;
+outline: none;
+border: 1px solid  #D9D9D9;
+outline: none;
+text-align: center;
+}
+
+.cod .username-image{
+  /* Rectangle 23 */
+
+position: absolute;
+width: 144px;
+height: 157px;
+left: 607px;
+top: 857px;
 
 background: #D9D9D9;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 15px;
+
+}
+
+.cod .username-rating {
+  /* image 7 */
+
+position: absolute;
+width: 172px;
+height: 46px;
+left: 590px;
+top: 1014px;
+
 
 }
