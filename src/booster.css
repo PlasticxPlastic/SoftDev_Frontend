@@ -1,7 +1,7 @@
 /* booster.css */
 
 .booster-form {
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ddd;
@@ -43,10 +43,10 @@ label {
 
 input[type="text"],
 select {
-  width: 100%;
+  width: 570px;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 20px;
   font-size: 14px;
 }
 
