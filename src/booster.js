@@ -25,7 +25,7 @@ function CreateBoosterForm() {
 
     return (
         <div className="booster-form">
-            <label>รูปบัตรประชาชน</label>
+            <label className="label-center">รูปบัตรประชาชน</label>
             <div className="image-upload">
                 {/* Image upload box */}
                 {/* Add your image upload functionality here */}
@@ -34,7 +34,8 @@ function CreateBoosterForm() {
                 </div>
                 <input type="file" accept="image/*" /> {/* Actual file input */}
             </div>
-            <label>รูปหน้าตรง</label>
+
+            <label className="label-center">รูปหน้าตรง</label>
             <div className="image-upload">
                 {/* Image upload box */}
                 {/* Add your image upload functionality here */}
@@ -43,7 +44,8 @@ function CreateBoosterForm() {
                 </div>
                 <input type="file" accept="image/*" /> {/* Actual file input */}
             </div>
-            <label>รูปโปรโมท</label>
+
+            <label className="label-center">รูปโปรโมท</label>
             <div className="image-upload">
                 {/* Image upload box */}
                 {/* Add your image upload functionality here */}
@@ -237,9 +239,11 @@ function CreateBoosterForm() {
                         </div>
                     </div>
                 </div>
-                <button className="confirm-button" onClick={handleConfirmClick}>
-                    ยืนยัน
-                </button>
+                <div className="button-center">
+                    <button className="confirm-button" onClick={handleConfirmClick}>
+                        ยืนยัน
+                    </button>
+                </div>
             </div>
         </div>
     );
