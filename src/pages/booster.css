@@ -1,0 +1,136 @@
+.image-upload-box {
+  width: 100px;
+  height: 100px;
+  background-color: #d9d9d9;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.image-upload-box:hover {
+  background-color: #c9c9c9;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.upload-text {
+  font-size: 16px;
+  color: #333;
+}
+
+/*------------------------------------------------------------------------------------------------------------------*/
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Style for other input elements and labels */
+.label-input-container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+/* Style the "Order Name" label and input to be above each other */
+.detail-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 5;
+}
+
+.detail-info label {
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.detail-info .input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detail-info input {
+  width: 250px;
+  height: 20px;
+  background-color: #d9d9d9;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+/*------------------------------------------------------------------------------------------------------------------*/
+/* Style the Rank,Price,HighestRank,WinRate elements */
+.rank-details {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.detail {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.detail label {
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.detail .input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detail input,
+.detail select {
+  width: 135px;
+  /* Set the width to a fixed value */
+  height: 36px;
+  background-color: #d9d9d9;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+
+.confirm-button {
+  background-color: #5ae544;
+  width: 150px;
+  height: 40px;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.confirm-button:hover {
+  background-color: #4ac038;
+}
+
+/* Media queries for responsiveness */
+/* Example: */
+@media screen and (max-width: 768px) {
+  .image-upload {
+    /* Adjust styles for smaller screens */
+  }
+
+  /* Add more responsive styles as needed */
+}
