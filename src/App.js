@@ -1,22 +1,18 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./Components/Navbar";
-import Home from "./pages";
-import SignUp from "./pages/signup";
-import SignIn from "./pages/signin";
-import CreateSellOrder from "./pages/CreateSellOrder"; // Import the CreateSellOrder component
-
+import UserReport from "./pages/UserReport";
+import BuyerReport from "./pages/ฺBuyerReport";
+import BoosterReport from "./pages/ฺBoosterReport";
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/" element={<UserReport />} />
         {/* Add a route for the CreateSellOrder component */}
-        <Route path="/create-sell-order" element={<CreateSellOrder />} />
+        <Route path="/BoosterReport" element={<BoosterReport />} />
+        <Route path="/BuyerReport" element={<BuyerReport />} />
+        <Route path="/UserReport" element={<UserReport />} />
       </Routes>
     </BrowserRouter>
   );
