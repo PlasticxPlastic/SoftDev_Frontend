@@ -1,38 +1,38 @@
 .shop-header {
     background-image: url(https://cdn.pic.in.th/file/picinth/logoa211890716326105.png); /* รูปภาพเป็นพื้นหลัง */
-    background-repeat: no-repeat; /* ไม่ซ้ำรูปภาพ */
-    background-size: cover; /* ปรับให้รูปภาพครอบคลุมทั้งพื้นที่ */
-    background-position: center; /* วางรูปภาพกึ่งกลาง */
-    height: 500px; /* กำหนดความสูงตามต้องการ */
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: center; 
+    height: 500px; 
 }
 
 .mode-buttons {
     display: flex;
     margin: 10px 0;
-    background-color: #f5f5f5; /* พื้นหลังสีเทา */
-    padding: 10px; /* เพิ่ม padding เพื่อให้มีระยะห่างรอบๆ */
+    background-color: #f5f5f5; 
+    padding: 10px; 
 }
   
 .mode-buttons button {
-    margin-right: 10px; /* ระยะห่างขวาของปุ่ม */
+    margin-right: 10px; 
     padding: 10px 100px;
-    border: 1px solid #ccc; /* เส้นกรอบสีเทา */
-    background-color: #ddd; /* สีเทา */
-    border-radius: 5px; /* ทำมุมของปุ่มให้โค้ง */
+    border: 1px solid #ccc; 
+    background-color: #ddd; 
+    border-radius: 5px; 
     cursor: pointer;
     transition: background-color 0.3s;
 }
   
 .mode-buttons button.active {
-    background-color: #f5f5f5; /* สีเทาอ่อน */
-    border-color: #666; /* เส้นกรอบสีเทาเข้ม */
+    background-color: #f5f5f5; 
+    border-color: #666; 
 }
   
   .add-product-button {
     display: flex;
-    flex-direction: column; /* กำหนดให้ข้อความและรูปภาพเรียงต่อกันในแนวตั้ง */
-    align-items: center; /* จัดให้ตรงกลางแนวนอน */
-    justify-content: center; /* จัดให้ตรงกลางแนวตั้ง */
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
     border: none;            
     background: transparent; 
     padding: 0;             
@@ -67,7 +67,7 @@
 .shop-container {
     display: flex;
     padding: 20px;
-    min-height: calc(100vh - 540px); /* ใช้ min-height แทนที่ height */
+    min-height: calc(100vh - 540px); 
   }
   
   .filter-container, .products-container {
