@@ -1,0 +1,96 @@
+/* booster.css */
+
+.booster-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .image-upload {
+    margin-bottom: 20px;
+  }
+  
+  .image-upload-box {
+    width: 150px;
+    height: 150px;
+    border: 1px dashed #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 10px;
+  }
+  
+  .image-upload input[type="file"] {
+    display: none;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"],
+  select {
+    width: 570px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 14px;
+  }
+  
+  .detail-info {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  
+  .rank-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .detail {
+    flex-basis: calc(25% - 10px);
+    margin-bottom: 10px;
+  }
+  
+  .label-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .button-center {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .confirm-button {
+    background-color: #62ff77;
+    color: #000000;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 50px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .confirm-button:hover {
+    background-color: #ff4e4e;
+  }
