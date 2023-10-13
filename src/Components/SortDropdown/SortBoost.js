@@ -6,7 +6,7 @@ const SortBoost = ({ sortOrder, onSortChange }) => {
     return (
         <div className="sort-container">
             <select onChange={onSortChange} value={sortOrder} className="sort-dropdown">
-                <option value="">เรียงลำดับราคาBoost</option>
+                <option value="">เรียงลำดับราคา Boost</option>
                 <option value="lowToHigh">ราคาน้อยไปราคามาก</option>
                 <option value="highToLow">ราคามากไปราคาน้อย</option>
             </select>

@@ -1,11 +1,10 @@
 import React from 'react';
 import './AddBoost.css';
-import addProductIcon from '../../Asset/Add.png';
 
 function AddBoost({ onClick }) {
     return (
         <button className="add-boost-button">
-            <img src={addProductIcon} alt="Add Boost" />
+            <img src="https://cdn.pic.in.th/file/picinth/Add.png" alt="Add Boost" />
             <span className="overlay-text">Add Boost</span>
         </button>
     );

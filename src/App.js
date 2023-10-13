@@ -6,7 +6,6 @@ import About from './pages/About';
 import Contact from './pages/contact';
 import SignUp from './pages/signup';
 import SignIn from './pages/signin';
-import MainShop from './pages/MainShop';
 
 function App() {
   return (
@@ -18,8 +17,6 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/MainShop" element={<MainShop />} />
-        
       </Routes>
     </BrowserRouter>
   );

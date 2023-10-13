@@ -1,5 +1,5 @@
 .shop-header {
-    background-image: url('../Asset/logo.png'); /* รูปภาพเป็นพื้นหลัง */
+    background-image: url(https://cdn.pic.in.th/file/picinth/logoa211890716326105.png); /* รูปภาพเป็นพื้นหลัง */
     background-repeat: no-repeat; /* ไม่ซ้ำรูปภาพ */
     background-size: cover; /* ปรับให้รูปภาพครอบคลุมทั้งพื้นที่ */
     background-position: center; /* วางรูปภาพกึ่งกลาง */

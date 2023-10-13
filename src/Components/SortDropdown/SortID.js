@@ -6,7 +6,7 @@ const SortID = ({ sortOrder, onSortChange }) => {
     return (
         <div className="sort-container">
             <select onChange={onSortChange} value={sortOrder} className="sort-dropdown">
-                <option value="">เรียงลำดับราคาID</option>
+                <option value="">เรียงลำดับราคา ID</option>
                 <option value="lowToHigh">ราคาน้อยไปราคามาก</option>
                 <option value="highToLow">ราคามากไปราคาน้อย</option>
             </select>
