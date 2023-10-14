@@ -1,8 +1,6 @@
 import React from 'react';
 
 function UserReport() {
-    
-      
     const dropdownContainerStyle = {
         width: '9rem',
         height: '3rem',
