@@ -317,7 +317,6 @@ const leftSideStyle = {
           </div>
         </div>
 
-
         <div style={largeInputContainerStyle}>
           <div style={inputContainerStyle}>
           <p style={titleStyle}>Facebook</p>

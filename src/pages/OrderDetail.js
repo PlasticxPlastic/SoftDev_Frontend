@@ -163,6 +163,8 @@ function OrderDetail() {
     color: 'black',
     fontSize: '3rem',
   };
+
+
   
 
   return (

@@ -32,7 +32,7 @@ function App() {
         <Route path="/UserReport" element={<UserReport />} />
         <Route path="/BoosterReport" element={<BoosterReport />} />
 
-        <Route path="/Profile" element={Profile()} /> 
+        <Route path="/Profile" element={<Profile />} /> 
         <Route path="/ownProfile" element={ownProfile()} /> 
         <Route path="/OrderDetail" element={<OrderDetail />} />
         <Route path="/CreateSellOrder" element={<CreateSellOrder />} />

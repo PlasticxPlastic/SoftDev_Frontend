@@ -1,145 +1,88 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import cardProfile from '../Components/cardProfile';
+import React from 'react';
 
-const ProfileContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-`;
+function ProfilePage() {
+  const containerStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100vh',
+  };
 
-const TopImage = styled.div`
-    img {
-        width: 100px;
-        height: 100px;
-        object-fit: cover;
-    }
-`;
+  const profileSideStyle = {
+    flex: 4,
+    display: 'flex',
+    flexDirection: 'row',
+  };
 
-const BottomImages = styled.div`
-    display: flex;
-    justify-content: center;
-    gap: 300px;
-    margin-top: 20px;
-`;
+  const historySideStyle = {
+    flex: 6,
+  };
 
-const ImageContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  const leftSectionStyle = {
+    flex: 3,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  };
 
-    img {
-        width: 100px;
-        height: 100px;
-        object-fit: cover;
-    }
-`;
+  const middleSectionStyle = {
+    flex: 4,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  };
 
-const OptionsContainer = styled.div`
-    display: flex;
-    margin-top: 20px;
-`;
+  const rightSectionStyle = {
+    flex: 3,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  };
 
-const OptionButton = styled.button`
-    padding: 10px;
-    margin: 5px;
-    cursor: pointer;
-    border: none;
-    background: none;
-    text-decoration: none;
-    position: relative;
+  const imageStyle = {
+    width: '9rem',
+    height: '9rem', // Adjust the height as needed
+    backgroundColor: 'gray', // Placeholder for image
+    borderRadius: '1rem', // Add border radius to create rounded corners
+  };
+  
 
-    &.active::after {
-        content: '';
-        display: block;
-        height: 2px;
-        width: 100%;
-        background-color: #676767;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-    }
-`;
+  const textBelowImageStyle = {
+    textAlign: 'center',
+  };
 
-const SelectedOptionInfo = styled.div`
-    margin-top: 20px;
-    width: 1000px;
-    height: 250px;
-    border: 1px solid #ccc;
-    background-color: #f0f0f0;
-    padding: 20px;
-    box-sizing: border-box;
-`;
+  const profileTextStyle = {
+    margin: '0.5rem', // Adjust as needed
+  };
 
-const Profile = () => {
-    const [selectedOption, setSelectedOption] = useState(null);
+  return (
+    <div style={containerStyle}>
+      <div style={profileSideStyle}>
+        <div style={leftSectionStyle}>
+        <img src="https://media.discordapp.net/attachments/1072640218223616051/1162320754742939658/Profile_2.png?ex=653b828e&is=65290d8e&hm=2d08d1b991f77f30981391bdc11fa3f0db80b3828867926fd8e65e473dde6840&=&width=178&height=202" alt="Buy" />
+          <p style={textBelowImageStyle}>ซื้อขาย</p>
+        </div>
+        <div style={{ width: '20rem' }}></div>
+        <div style={middleSectionStyle}>
+          <p style={profileTextStyle}>Profile</p>
+          <img src="https://media.discordapp.net/attachments/1072640218223616051/1162320754742939658/Profile_2.png?ex=653b828e&is=65290d8e&hm=2d08d1b991f77f30981391bdc11fa3f0db80b3828867926fd8e65e473dde6840&=&width=178&height=202" alt="Profile" />
+          <p style={profileTextStyle}>Profile</p>
+        </div>
+        <div style={{ width: '20rem' }}></div>
+        <div style={rightSectionStyle}>
+        <img src="https://media.discordapp.net/attachments/1072640218223616051/1162320754742939658/Profile_2.png?ex=653b828e&is=65290d8e&hm=2d08d1b991f77f30981391bdc11fa3f0db80b3828867926fd8e65e473dde6840&=&width=178&height=202" alt="Boost" />
+          <p style={textBelowImageStyle}>Boost</p>
+        </div>
+      </div>
+      <div style={historySideStyle}>
+        {/* Place your content for the history side here */}
+      </div>
+    </div>
+  );
+}
 
-    const handleOptionClick = (option) => {
-        setSelectedOption(option);
-    };
-
-    const sellingData = {
-        imageUrl: 'URL_TO_SELLING_IMAGE',
-        productName: 'Product Name',
-        status: 'Status',
-        seller: 'Seller Name',
-        price: 99.99, // Replace with the actual price
-    };
-
-    return (
-        <ProfileContainer>
-            <TopImage>
-                <img src="https://media.discordapp.net/attachments/1072640218223616051/1162320754453512212/Profile_1.png?ex=653b828e&is=65290d8e&hm=876c85614aad7c1a790e7828ca92daa96a8fd6800f748128f74611804560136a&=&width=178&height=192" alt="Icognito Man" />
-                <p>Icognito Man</p>
-            </TopImage>
-            <BottomImages>
-                <ImageContainer>
-                    <img src= "https://media.discordapp.net/attachments/1072640218223616051/1162320754742939658/Profile_2.png?ex=653b828e&is=65290d8e&hm=2d08d1b991f77f30981391bdc11fa3f0db80b3828867926fd8e65e473dde6840&=&width=178&height=202" alt="ซื้อขาย 900 ครั้ง" />
-                    <p>ซื้อขาย 900 ครั้ง</p>
-                </ImageContainer>
-                <ImageContainer>
-                    <img src="https://media.discordapp.net/attachments/1072640218223616051/1162320754742939658/Profile_2.png?ex=653b828e&is=65290d8e&hm=2d08d1b991f77f30981391bdc11fa3f0db80b3828867926fd8e65e473dde6840&=&width=178&height=202" alt="คะแนนผู้ใช้" />
-                </ImageContainer>
-                <ImageContainer>
-                    <img src="https://media.discordapp.net/attachments/1072640218223616051/1162320754742939658/Profile_2.png?ex=653b828e&is=65290d8e&hm=2d08d1b991f77f30981391bdc11fa3f0db80b3828867926fd8e65e473dde6840&=&width=178&height=202" alt="Boost 900 ครั้ง" />
-                    <p>Boost 900 ครั้ง</p>
-                </ImageContainer>
-            </BottomImages>
-            <OptionsContainer>
-                <OptionButton
-                    className={`option-button ${selectedOption === 'selling' ? 'active' : ''}`}
-                    onClick={() => handleOptionClick('selling')}
-                >
-                    กำลังขาย
-                </OptionButton>
-                <OptionButton
-                    className={`option-button ${selectedOption === 'boosting' ? 'active' : ''}`}
-                    onClick={() => handleOptionClick('boosting')}
-                >
-                    Boosting
-                </OptionButton>
-                <OptionButton
-                    className={`option-button ${selectedOption === 'trading' ? 'active' : ''}`}
-                    onClick={() => handleOptionClick('trading')}
-                >
-                    กำลังทำการซื้อขาย
-                </OptionButton>
-            </OptionsContainer>
-            {selectedOption && (
-                <SelectedOptionInfo>
-                    {selectedOption === 'selling' &&(
-                        <div>
-                            <p>ข้อมูลกำลังขาย</p>
-                            <cardProfile {...sellingData} />
-                        </div>
-                    ) }
-                    {selectedOption === 'boosting' && <p>ข้อมูล Boosting</p>}
-                    {selectedOption === 'trading' && <p>ข้อมูลกำลังทำการซื้อขาย</p>}
-                </SelectedOptionInfo>
-            )}
-        </ProfileContainer>
-    );
-};
-
-export default Profile;
+export default ProfilePage;
