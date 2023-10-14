@@ -2,7 +2,6 @@ import "./announcing.css";
 import { NavLink as Link } from "react-router-dom";
 import ImgModal from "../Components/ImgModal";
 
-import Contact from './contact';
 import SignUp from './signup';
 import SignIn from './signin';
 import reported_booster from './reported_booster' ;

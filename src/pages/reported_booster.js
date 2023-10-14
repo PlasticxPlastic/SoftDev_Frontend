@@ -4,15 +4,15 @@ import SignIn from "./signin";
 import reported_ID from './reported_ID';
 import reported_booster_detailed from './reported_booster_detailed' ;
 import { NavLink as Link } from "react-router-dom";
-import {
-  Nav,
-  NavLogo,
-  NavLink,
-  Bars,
-  NavMenu,
-  NavBtn,
-  NavBtnLink,
-} from "../Components/Navbar/NavbarElements";
+// import {
+//   Nav,
+//   NavLogo,
+//   NavLink,
+//   Bars,
+//   NavMenu,
+//   NavBtn,
+//   NavBtnLink,
+// } from "../Components/Navbar/NavbarElements";
 
 
 const reported_booster = () => {

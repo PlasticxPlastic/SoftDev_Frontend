@@ -7,7 +7,6 @@ const Navbar = () => {
         <>
         <div className="container">
             <img className="navheader" src="/image/frames.png"></img>
-
            <div className="flex">
                 <div className="one">
                     <div className="content-1">
