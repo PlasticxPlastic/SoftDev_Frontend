@@ -1,8 +1,6 @@
 import React from 'react';
 
 function UserReport() {
-    
-      
     const dropdownContainerStyle = {
         width: '9rem',
         height: '3rem',
@@ -71,6 +69,7 @@ const leftSideStyle = {
     alignItems: 'center', // Center-align all content in the right side
     justifyContent: 'center', // Center-align all content in the right side
     padding: '2rem',
+    marginBottom: '20rem',
   };
 
 

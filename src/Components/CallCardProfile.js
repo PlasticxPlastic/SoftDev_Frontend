@@ -1,6 +1,6 @@
 // App.js
 import React from 'react';
-import CardProfile from './CardProfile';
+import CardProfile from './cardProfile';
 
 const CallCardProfile = () => {
     const productData = {

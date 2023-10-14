@@ -2,8 +2,8 @@ import React from 'react';
 
 function BuyerReport() {
   const greenButtonStyle = {
-    width: '12rem',
-    height: '2rem',
+    width: '28rem',
+    height: '3rem',
     backgroundColor: '#05FF00',
     border: '2px solid #05FF00',
     color: 'white',
@@ -57,6 +57,7 @@ function BuyerReport() {
     alignItems: 'center', // Center-align all content in the right side
     justifyContent: 'center', // Center-align all content in the right side
     padding: '2rem',
+    marginBottom: '20rem',
   };
 
 
@@ -67,8 +68,8 @@ function BuyerReport() {
 };
 
 const dateTimeInputStyle = {
-    width: '16rem',
-    height: '1.5rem',
+    width: '25rem',
+    height: '3rem',
     borderRadius: '10px',
     border: '1px solid gray',
     fontSize: '1rem',
@@ -84,8 +85,8 @@ const titleStyle = {
 };
 
 const inputStyle = {
-    width: '12rem',
-    height: '1.5rem',
+    width: '25rem',
+    height: '3rem',
     borderRadius: '10px',
     border: '1px solid gray',
     fontSize: '1rem',
@@ -96,8 +97,8 @@ const inputStyle = {
 };
 
 const largeInputStyleFacebook = {
-    width: '22rem',
-    height: '1.5rem',
+    width: '25rem',
+    height: '3rem',
     borderRadius: '10px',
     border: '1px solid gray',
     fontSize: '1rem',
@@ -107,8 +108,8 @@ const largeInputStyleFacebook = {
 };
 
 const largeInputStyleLine = {
-    width: '22rem',
-    height: '1.5rem',
+    width: '25rem',
+    height: '3rem',
     borderRadius: '10px',
     border: '1px solid gray',
     fontSize: '1rem',

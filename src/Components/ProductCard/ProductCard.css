@@ -1,0 +1,40 @@
+/* MainShop.css or another CSS file */
+.product-card {
+    border: 2px solid #858585;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 4px;
+    text-align: center;
+    width: 200px; /* กำหนดความกว้างสำหรับ card */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    background-color: #ffffff; 
+}
+
+.product-image {
+    max-width: 100%;
+    height: auto;
+    padding-bottom: 10px;
+    width: 100%; /* กำหนดความกว้างสำหรับรูปภาพ */
+}
+
+.product-name {
+    margin: 0;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-price {
+    margin: 0;
+    text-align: right;
+    width: 100%;
+    font-size: 1.5em;
+}
+
+.product-card:hover {
+    background-color: #dbdbdb; /* หรือสีที่คุณต้องการ */
+}
