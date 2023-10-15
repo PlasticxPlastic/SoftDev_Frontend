@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Card from '../Components/Card/CardProfile';
+import Card from '../../Components/Card/CardProfile';
 
 function ProfilePage() {
   const [currentState, setCurrentState] = useState('');
@@ -9,9 +9,7 @@ function ProfilePage() {
   };
 
   const cardData = [
-    { id: 1, price: '200 baht', username: 'username1', status: 'Buying' },
     { id: 2, price: '150 baht', username: 'username2', status: 'Selling' },
-    { id: 3, price: '300 baht', username: 'username3', status: 'Boosted' },
     { id: 4, price: '250 baht', username: 'username4', status: 'Boosting' },
     { id: 5, price: '180 baht', username: 'username5', status: 'Complete' },
   ];
@@ -94,14 +92,10 @@ function ProfilePage() {
 
   const filteredCardData = cardData.filter((card) => {
     switch (card.status) {
-      case 'Buying':
-        return currentState === 'BuyConfirm';
       case 'Selling':
-        return currentState === 'SellerConfirm';
-      case 'Boosted':
-        return currentState === 'BoostConfirm';
+        return currentState === 'Selling';
       case 'Boosting':
-        return currentState === 'BoosterConfirm';
+        return currentState === 'Boosting';
       case 'Complete':
         return currentState === 'History';
       default:
@@ -146,48 +140,24 @@ function ProfilePage() {
             style={{
               ...clickableTextStyle,
               textDecoration:
-                currentState === 'BuyConfirm' ? 'underline' : 'none',
-              fontWeight: currentState === 'BuyConfirm' ? 'bold' : 'normal',
+                currentState === 'Boosting' ? 'underline' : 'none',
+              fontWeight: currentState === 'Boosting' ? 'bold' : 'normal',
             }}
-            onClick={() => handleStateChange('BuyConfirm')}
+            onClick={() => handleStateChange('Boosting')}
           >
-            ไอดีที่รอการยืนยัน
+            ไอดีที่กำลังขาย
           </div>
           <div style={{ width: '4rem' }}></div>
           <div
             style={{
               ...clickableTextStyle,
               textDecoration:
-                currentState === 'SellerConfirm' ? 'underline' : 'none',
-              fontWeight: currentState === 'SellerConfirm' ? 'bold' : 'normal',
+                currentState === 'Selling' ? 'underline' : 'none',
+              fontWeight: currentState === 'Selling' ? 'bold' : 'normal',
             }}
-            onClick={() => handleStateChange('SellerConfirm')}
+            onClick={() => handleStateChange('Selling')}
           >
-            ไอดีที่ขาย
-          </div>
-          <div style={{ width: '4rem' }}></div>
-          <div
-            style={{
-              ...clickableTextStyle,
-              textDecoration:
-                currentState === 'BoostConfirm' ? 'underline' : 'none',
-              fontWeight: currentState === 'BoostConfirm' ? 'bold' : 'normal',
-            }}
-            onClick={() => handleStateChange('BoostConfirm')}
-          >
-            ไอดีที่กำลังให้บูส
-          </div>
-          <div style={{ width: '4rem' }}></div>
-          <div
-            style={{
-              ...clickableTextStyle,
-              textDecoration:
-                currentState === 'BoosterConfirm' ? 'underline' : 'none',
-              fontWeight: currentState === 'BoosterConfirm' ? 'bold' : 'normal',
-            }}
-            onClick={() => handleStateChange('BoosterConfirm')}
-          >
-            ไอดีที่เรากำลังบูส
+            ไอดีที่กำลังบูส
           </div>
           <div style={{ width: '4rem' }}></div>
             <div

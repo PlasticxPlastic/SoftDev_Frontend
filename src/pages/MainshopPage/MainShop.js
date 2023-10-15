@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './MainShop.css';
-import AddID from '../Components/AddProductButton/AddID';
-import AddBoost from '../Components/AddProductButton/AddBoost';
-import FilterID from '../Components/Filter/FilterID';
-import FilterBoost from '../Components/Filter/FilterBoost';
-import ProductCard from '../Components/ProductCard/ProductCard';
-import SortID from '../Components/SortDropdown/SortID'; 
-import SortBoost from '../Components/SortDropdown/SortBoost'; 
+import AddID from '../../Components/AddProductButton/AddID';
+import AddBoost from '../../Components/AddProductButton/AddBoost';
+import FilterID from '../../Components/Filter/FilterID';
+import FilterBoost from '../../Components/Filter/FilterBoost';
+import ProductCard from '../../Components/ProductCard/ProductCard';
+import SortID from '../../Components/SortDropdown/SortID'; 
+import SortBoost from '../../Components/SortDropdown/SortBoost'; 
 
 
 
