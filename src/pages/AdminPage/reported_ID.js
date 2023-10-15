@@ -57,7 +57,7 @@ const reported_ID = ()  => {
                   </h4>
               </div>
               <mockup class ="mockup">
-              <Link to="/reported_ID_detailed" style={{color:"grey", textDecorationLine:"none"}}>
+              <Link to="/reported_id_detailed" style={{color:"grey", textDecorationLine:"none"}}>
                 <h2 >ID ที่ถูกแจ้งปัญหามา</h2>
               </Link>
                 <div>

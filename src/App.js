@@ -18,6 +18,7 @@ import report_id from "./pages/AdminPage/reported_ID";
 import report_id_detail from "./pages/AdminPage/reported_ID_detailed";
 import reported_booster from "./pages/AdminPage/reported_booster";
 import reported_booster_detail from "./pages/AdminPage/reported_booster_detailed";
+import BoosterDetail from "./pages/ViewOrderPage/BoosterDetail";
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route path="/BuyerReport" element={<BuyerReport />} />
         <Route path="/UserReport" element={<UserReport />} />
         <Route path="/BoosterReport" element={<BoosterReport />} />
+        <Route path="/BoosterDetail" element={<BoosterDetail />} />
 
         <Route path="/Profile" element={<Profile />} /> 
         <Route path="/ownProfile" element={ownProfile()} /> 
