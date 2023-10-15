@@ -4,6 +4,7 @@ function OrderDetail() {
   const containerStyle = {
     display: 'flex',
     height: '100vh',
+    marginTop: '5rem',
   };
 
   const contentStyle = {
@@ -27,7 +28,7 @@ function OrderDetail() {
     alignItems: 'center',
     padding: '2rem',
     borderRadius: '10px',
-    marginLeft: '30rem',
+    marginLeft: '10rem',
   };
 
   const rightSideStyle = {
@@ -37,7 +38,7 @@ function OrderDetail() {
     flexDirection: 'column',
     alignItems: 'center',
     padding: '2rem',
-    marginRight: '20rem',
+    marginBottom: '30rem',
   };
 
   const textBoxContainerStyle = {
@@ -75,35 +76,35 @@ function OrderDetail() {
 
   const smallTextBoxStyle = {
     width: '10rem',
-    height: '3rem',
+    height: '2rem',
     backgroundColor: '#D9D9D9',
     borderRadius: '10px',
   };
 
   const smallTextBoxStyleGold = {
     width: '10rem',
-    height: '3rem',
+    height: '2rem',
     backgroundColor: 'rgba(250, 180, 10, 0.62)',
     borderRadius: '10px',
   };
 
   const smallTextBoxStyleRedBeads = {
     width: '10rem',
-    height: '3rem',
+    height: '2rem',
     backgroundColor: 'rgba(247, 0, 0, 0.74)',
     borderRadius: '10px',
   };
 
   const smallTextBoxStyleRedGems = {
     width: '10rem',
-    height: '3rem',
+    height: '2rem',
     backgroundColor: 'rgba(247, 0, 0, 0.63)',
     borderRadius: '10px',
   };
 
   const smallTextBoxStyleCoupon = {
     width: '10rem',
-    height: '3rem',
+    height: '2rem',
     backgroundColor: 'rgba(24, 119, 242, 0.78)',
     borderRadius: '10px',
   };
@@ -137,7 +138,7 @@ function OrderDetail() {
 
   const longTextBoxStyle = {
     width: '35rem',
-    height: '3rem',
+    height: '2rem',
     borderRadius: '10px',
     backgroundColor: '#D9D9D9',
   };

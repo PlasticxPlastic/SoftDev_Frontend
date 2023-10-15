@@ -69,7 +69,7 @@ const leftSideStyle = {
     alignItems: 'center', // Center-align all content in the right side
     justifyContent: 'center', // Center-align all content in the right side
     padding: '2rem',
-    marginBottom: '20rem',
+    marginBottom: '8rem',
   };
 
 
