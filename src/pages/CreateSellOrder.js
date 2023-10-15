@@ -11,10 +11,9 @@ function CreateSellOrder() {
 
   const roundedSquareStyle = {
     width: '40rem',
-    height: '20rem',
+    height: '50rem',
     borderRadius: '10px',
     backgroundColor: 'rgba(0, 0, 0, 0.25)',
-    marginBottom: '1rem',
   };
 
 

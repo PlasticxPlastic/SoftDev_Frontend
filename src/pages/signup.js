@@ -58,7 +58,6 @@ function signup() {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: '5rem',
   };
 
   const signUpTextStyle = {
@@ -71,7 +70,7 @@ function signup() {
 
   const inputStyle = {
     width: '28rem',
-    height: '2rem',
+    height: '1rem',
     flexShrink: 0,
     borderRadius: '0.5rem',
     background: 'rgba(250, 180, 10, 0.62)',
@@ -83,7 +82,7 @@ function signup() {
 
   const buttonStyle = {
     width: '30rem',
-    height: '4rem',
+    height: '2rem',
     borderRadius: '0.5rem',
     background: '#C58B00',
     color: 'white',
