@@ -28,7 +28,7 @@ const reported_booster = () => {
             marginLeft: ".4vh",
             backgroundColor: "transparent",
           }}
-        >            <Link to="/reported_ID" style={{color:"grey", textDecorationLine:"none", marginTop:"0.1vh"}}>
+        >            <Link to="/report_ID" style={{color:"grey", textDecorationLine:"none", marginTop:"0.1vh"}}>
           <h2>ID ที่ถูกแจ้งปัญหามา</h2>
       </Link>
 
