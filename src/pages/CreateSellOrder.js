@@ -6,12 +6,11 @@ function CreateSellOrder() {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '100vh',
   };
 
   const roundedSquareStyle = {
-    width: '40rem',
-    height: '50rem',
+    width: '30rem',
+    height: '15rem',
     borderRadius: '10px',
     backgroundColor: 'rgba(0, 0, 0, 0.25)',
   };
@@ -323,6 +322,7 @@ const dropdownContainerStyle = {
             />
           </div>
         </div>
+
         <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1rem', marginLeft: 'auto' }}>
             <button style={greenButtonStyle}>Submit</button>
         </div>

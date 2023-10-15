@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'; // Import Link for routing to the signi
 function signup() {
   const containerStyle = {
     display: 'flex',
-    height: '100vh',
   };
 
   const leftSideStyle = {
@@ -82,7 +81,7 @@ function signup() {
 
   const buttonStyle = {
     width: '30rem',
-    height: '2rem',
+    height: '3rem',
     borderRadius: '0.5rem',
     background: '#C58B00',
     color: 'white',
