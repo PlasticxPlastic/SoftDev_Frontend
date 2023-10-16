@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Card({ price, username }) {
+function Card({ price, username, order_name }) {
   const cardStyle = {
     display: 'flex',
     flexDirection: 'row',
@@ -17,6 +17,7 @@ function Card({ price, username }) {
   };
 
   const imageStyle = {
+    marginLeft: '2rem',
     width: '4rem',
     height: '4rem',
     backgroundColor: 'gray',
@@ -29,28 +30,35 @@ function Card({ price, username }) {
   const rightSideStyle = {
     flex: '70%',
     display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
     paddingLeft: '1rem', // Add padding to separate the text from the state text
+    marginTop: '1rem',
+    marginRight: '5rem',
   };
 
   const priceTextStyle = {
     textAlign: 'right',
+    color: 'red',
+    
   };
 
   const usernameTextStyle = {
     textAlign: 'right',
+    color: 'blue',
   };
 
   return (
     <div style={cardStyle}>
       <div style={leftSideStyle}>
         <div style={imageStyle}></div>
-        <p style={textBelowImageStyle}>Order</p>
+        <div style={{ width: '3rem' }}></div>
+        <p style={textBelowImageStyle}>ชื่อสินค้า : {order_name}</p>
       </div>
       <div style={rightSideStyle}>
-        <p style={priceTextStyle}>{price}</p>
-        <p style={usernameTextStyle}>{username}</p>
+        <p style={priceTextStyle}>ราคา : {price} บาท</p>
+        <div style={{ width: '10rem' }}></div>
+        <p style={usernameTextStyle}>เจ้าของOrder : {username}</p>
       </div>
     </div>
   );

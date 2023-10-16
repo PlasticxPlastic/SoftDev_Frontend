@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link for routing to the signup page
+import axios from 'axios';
 
 function SignInPage() {
   const containerStyle = {
@@ -91,6 +92,43 @@ function SignInPage() {
     border: 'none',
     cursor: 'pointer',
   };
+  const [formData, setFormData] = React.useState({
+    user_email: '',
+    password: '',
+  });
+
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post('http://localhost:3333/auth/login', formData);
+      const data = response.data;
+
+      if (data.accessToken) {
+        // Login successful
+        console.log("Login successful");
+
+        alert("Login successful")
+        
+        // Assuming you have a token, for example:
+        const token = data.accessToken;
+
+        // Store the token in local storage
+        localStorage.setItem('accessToken', token);
+        // You can also save the accessToken and user data in the browser for authentication.
+
+        window.location.href = '/MainShop';
+
+      } else {
+        // Handle login failure
+        console.log("Login failed:", data.error);
+        alert(data.error)
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div style={containerStyle}>
@@ -117,13 +155,19 @@ function SignInPage() {
           type="text"
           style={inputStyle}
           placeholder="Enter email or username"
+          name="user_email"
+          value={formData.user_email}
+          onChange={(e) => setFormData({ ...formData, user_email: e.target.value })}
         />
         <input
           type="password"
           style={inputStyle}
           placeholder="Password"
+          name="password"
+          value={formData.password}
+          onChange={(e) => setFormData({ ...formData, password: e.target.value })}
         />
-        <button style={buttonStyle}>Login</button>
+        <button style={buttonStyle} onClick={handleFormSubmit}>Login</button>
       </div>
     </div>
   );

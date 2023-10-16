@@ -1,18 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '../../Components/Card/CardProfile';
+import Axios from 'axios';
+import { useParams } from 'react-router-dom';
+
 
 function ProfilePage() {
+  const { userId } = useParams();
   const [currentState, setCurrentState] = useState('');
 
   const handleStateChange = (newState) => {
     setCurrentState(newState);
   };
 
-  const cardData = [
-    { id: 2, price: '150 baht', username: 'username2', status: 'Selling' },
-    { id: 4, price: '250 baht', username: 'username4', status: 'Boosting' },
-    { id: 5, price: '180 baht', username: 'username5', status: 'Complete' },
-  ];
+  const [profileData, setProfileData] = useState({});
+
+  const [userData, setUserData] = useState({});
+
+  const [sellingData, setSellingData] = useState({});
+
+  const [boostingData, setBoostingData] = useState({});
+
+  const [historyData, setHistoryData] = useState({});
+
+  const getProfileData = () => {
+    Axios.get(`http://localhost:3333/profile/profile/${userId}`).then((response) => {
+      const userData = response.data.profileData[0];
+      const sellingData = response.data.accountBeingSold;
+      const boostingData = response.data.accountBeingBoosted[0];
+      const historyData = response.data.accountHistory[0];
+      setUserData(response.data.profileData[0]);
+      setSellingData(response.data.accountBeingSold);
+      setBoostingData(response.data.accountBeingBoosted[0]);
+      setHistoryData(response.data.accountHistory[0]);
+      console.log(userData);
+      console.log(sellingData); 
+      console.log(boostingData);       
+      console.log(historyData); 
+    });
+  }
+  
+  
+  useEffect(() => {
+    getProfileData();
+  }, []);
+
+
+  
   
 
   const clickableTextStyle = {
@@ -90,21 +123,6 @@ function ProfilePage() {
     fontSize: '1rem',
   };
 
-  const filteredCardData = cardData.filter((card) => {
-    switch (card.status) {
-      case 'Selling':
-        return currentState === 'Selling';
-      case 'Boosting':
-        return currentState === 'Boosting';
-      case 'Complete':
-        return currentState === 'History';
-      default:
-        return false;
-    }
-  });
-
-  
-
   return (
     <div style={containerStyle}>
       <div style={profileSideStyle}>
@@ -113,16 +131,18 @@ function ProfilePage() {
             src="https://media.discordapp.net/attachments/1072640218223616051/1162320754742939658/Profile_2.png?ex=653b828e&is=65290d8e&hm=2d08d1b991f77f30981391bdc11fa3f0db80b3828867926fd8e65e473dde6840&=&width=178&height=202"
             alt="Buy"
           />
-          <p style={textBelowImageStyle}>ซื้อขาย</p>
+          <p style={textBelowImageStyle}>ซื้อขายสำเร็จ {userData.selling_success || '0'} ครั้ง</p>
         </div>
         <div style={{ width: '20rem' }}></div>
         <div style={middleSectionStyle}>
-          <p style={profileTextStyle}>Profile</p>
+        <p style={profileTextStyle}>
+          {userData.user_name || 'ไม่พบชื่อผู้ใช้'}
+        </p>
           <img
             src="https://media.discordapp.net/attachments/1072640218223616051/1162320754742939658/Profile_2.png?ex=653b828e&is=65290d8e&hm=2d08d1b991f77f30981391bdc11fa3f0db80b3828867926fd8e65e473dde6840&=&width=178&height=202"
             alt="Profile"
           />
-          <p style={profileTextStyle}>Profile</p>
+          <p style={textBelowImageStyle}>Review Score :  {userData.review_score || '0'} </p>
         </div>
         <div style={{ width: '20rem' }}></div>
         <div style={rightSectionStyle}>
@@ -130,7 +150,7 @@ function ProfilePage() {
             src="https://media.discordapp.net/attachments/1072640218223616051/1162320754742939658/Profile_2.png?ex=653b828e&is=65290d8e&hm=2d08d1b991f77f30981391bdc11fa3f0db80b3828867926fd8e65e473dde6840&=&width=178&height=202"
             alt="Boost"
           />
-          <p style={textBelowImageStyle}>Boost</p>
+          <p style={textBelowImageStyle}>Boostสำเร็จ {userData.boosting_success || '0'} ครั้ง</p>
         </div>
       </div>
       <div></div>
@@ -140,10 +160,10 @@ function ProfilePage() {
             style={{
               ...clickableTextStyle,
               textDecoration:
-                currentState === 'Boosting' ? 'underline' : 'none',
-              fontWeight: currentState === 'Boosting' ? 'bold' : 'normal',
+                currentState === 'Selling' ? 'underline' : 'none',
+              fontWeight: currentState === 'Selling' ? 'bold' : 'normal',
             }}
-            onClick={() => handleStateChange('Boosting')}
+            onClick={() => handleStateChange('Selling')}
           >
             ไอดีที่กำลังขาย
           </div>
@@ -152,10 +172,10 @@ function ProfilePage() {
             style={{
               ...clickableTextStyle,
               textDecoration:
-                currentState === 'Selling' ? 'underline' : 'none',
-              fontWeight: currentState === 'Selling' ? 'bold' : 'normal',
+                currentState === 'Boosting' ? 'underline' : 'none',
+              fontWeight: currentState === 'Boosting' ? 'bold' : 'normal',
             }}
-            onClick={() => handleStateChange('Selling')}
+            onClick={() => handleStateChange('Boosting')}
           >
             ไอดีที่กำลังบูส
           </div>
@@ -173,8 +193,8 @@ function ProfilePage() {
           </div>
         </div>
         <div>
-          {filteredCardData.map((card) => (
-            <Card key={card.id} price={card.price} username={card.username} />            
+          {currentState === 'Selling' && sellingData.map((card, index) => (
+            <Card key={index} price={card.price} username={card.user_name} order_name={card.order_name} />
           ))}
         </div>
       </div>

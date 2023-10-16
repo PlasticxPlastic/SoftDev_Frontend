@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link for routing to the signin page
+import axios from 'axios';
 
-function signup() {
+function Signup() {
   const containerStyle = {
     display: 'flex',
+    height: '100vh',
   };
 
   const leftSideStyle = {
@@ -57,6 +59,7 @@ function signup() {
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: '5rem',
   };
 
   const signUpTextStyle = {
@@ -69,7 +72,7 @@ function signup() {
 
   const inputStyle = {
     width: '28rem',
-    height: '1rem',
+    height: '2rem',
     flexShrink: 0,
     borderRadius: '0.5rem',
     background: 'rgba(250, 180, 10, 0.62)',
@@ -81,13 +84,55 @@ function signup() {
 
   const buttonStyle = {
     width: '30rem',
-    height: '3rem',
+    height: '4rem',
     borderRadius: '0.5rem',
     background: '#C58B00',
     color: 'white',
     fontSize: '1rem',
     border: 'none',
     cursor: 'pointer',
+  };
+
+  const [formData, setFormData] = React.useState({
+    user_email: '',
+    password: '',
+    first_name: '',
+    last_name: '',
+    con_num: '',
+    user_name: '',
+    confirmPassword: '',
+  });
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+
+    // Check if the passwords match
+    if (formData.password !== formData.confirmPassword) {
+      // Passwords do not match, show an error or take appropriate action
+      alert("Passwords do not match");
+      return; // Stop form submission
+    }
+
+    try {
+      const response = await axios.post('http://localhost:3333/auth/register', formData);
+      if (response.data.message === "Ok") {
+        // Registration successful
+        console.log("Registration successful");
+        alert("Registration successful");
+      } else if (response.data.error === "Email already exists!") {
+        // Handle the case where the email already exists
+        console.log("Email already exists. Please use a different email.");
+        alert("Email already exists. Please use a different email.");
+      } else {
+        // Handle other cases
+        console.log("Registration failed:", response.data.error);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
@@ -111,17 +156,17 @@ function signup() {
       {/* Right Side */}
       <div style={rightSideStyle}>
         <p style={signUpTextStyle}>Sign Up</p>
-        <input type="text" style={inputStyle} placeholder="Enter Email" />
-        <input type="text" style={inputStyle} placeholder="Create Username" />
-        <input type="text" style={inputStyle} placeholder="Contact Number" />
-        <input type="text" style={inputStyle} placeholder="First name" />
-        <input type="text" style={inputStyle} placeholder="Last name" />
-        <input type="password" style={inputStyle} placeholder="Password" />
-        <input type="password" style={inputStyle} placeholder="Confirm Password" />
-        <button style={buttonStyle}>Register</button>
+        <input type="text" style={inputStyle} placeholder="Enter Email" name="user_email" onChange={handleInputChange} />
+        <input type="text" style={inputStyle} placeholder="Create Username" name="user_name" onChange={handleInputChange} />
+        <input type="text" style={inputStyle} placeholder="Contact Number" name="con_num" onChange={handleInputChange} />
+        <input type="text" style={inputStyle} placeholder="First name" name="first_name" onChange={handleInputChange} />
+        <input type="text" style={inputStyle} placeholder="Last name" name="last_name" onChange={handleInputChange} />
+        <input type="password" style={inputStyle} placeholder="Password" name="password" onChange={handleInputChange} />
+        <input type="password" style={inputStyle} placeholder="Confirm Password" name="confirmPassword" onChange={handleInputChange} />
+        <button style={buttonStyle} onClick={handleFormSubmit}>Register</button>
       </div>
     </div>
   );
 }
 
-export default signup;
+export default Signup;

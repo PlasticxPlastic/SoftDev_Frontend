@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useState } from 'react';
 function CreateSellOrder() {
   const containerStyle = {
     display: 'flex',
@@ -14,6 +14,25 @@ function CreateSellOrder() {
     borderRadius: '10px',
     backgroundColor: 'rgba(0, 0, 0, 0.25)',
   };
+  const [imagePreview, setImagePreview] = useState(null);
+
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const imagePreview = e.target.result;
+        console.log('รูปภาพที่เลือก:', imagePreview);
+  
+        // อัพเดทสถานะของ component เพื่อแสดงรูปภาพที่ถูกอัพโหลด
+        setImagePreview(imagePreview);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+  
+  
 
 
 
@@ -189,7 +208,29 @@ const dropdownContainerStyle = {
 
   return (
     <div style={containerStyle}>
-      <div style={roundedSquareStyle}></div>
+        <p style={titleStyle}>อัพโหลดรูปภาพ</p>
+        <input
+        type="file"
+        accept=".png, .jpeg, .jpg"
+        onChange={handleImageUpload}
+      />
+      <div style={roundedSquareStyle}>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+        {imagePreview && (
+          <img
+            src={imagePreview}
+            alt="Uploaded"
+            style={{
+              maxWidth: '30rem',
+              maxHeight: '15rem',
+              width: 'auto',
+              height: 'auto',
+            }}
+          />
+        )}
+        </div>
+      </div>
+
       <p style={titleStyle}>ชื่อสินค้า</p>
       <input
           type="text"
