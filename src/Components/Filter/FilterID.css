@@ -1,0 +1,42 @@
+.FilterID button {
+    padding: 10px 10px;
+    margin: 10px 10px 10px 0;
+    cursor: pointer;
+    width: 100%; /* ทำให้ปุ่มยืดเต็มพื้นที่ใน container ของมัน */
+    border: none;
+    border-radius: 10px;
+    background-color: #ddd;
+}
+
+/* ให้ปุ่มใน dropdown อยู่ชิดกันมากขึ้น */
+.FilterID .dropdown-button {
+    margin: 1px 0;
+    background-color: #ececec;
+}
+
+.FilterID select {
+    display: block;
+    margin-top: 5px;
+}
+
+.FilterID label {
+    display: block;
+    margin: 5px 0;
+}
+
+.FilterID .rank-options {
+    background-color: #ececec; /* ตั้งค่าพื้นหลังสำหรับทุก checkbox */
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.FilterID .rank-row {
+    margin-bottom: 5px; /* ตั้งค่าระยะห่างระหว่างบรรทัด */
+}
+
+.FilterID .rank-row label {
+    display: block;
+    padding: 5px;
+    cursor: pointer;
+    text-align: left; /* ตั้งค่าให้เนื้อหาอยู่ทางด้านซ้ายของ label */
+}

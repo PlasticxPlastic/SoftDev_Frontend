@@ -1,0 +1,108 @@
+.shop-header {
+    background-image: url(https://cdn.pic.in.th/file/picinth/logoa211890716326105.png); /* รูปภาพเป็นพื้นหลัง */
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-position: center; 
+    height: 500px; 
+}
+
+.mode-buttons {
+    display: flex;
+    margin: 10px 0;
+    background-color: #f5f5f5; 
+    padding: 10px; 
+}
+  
+.mode-buttons button {
+    margin-right: 10px; 
+    padding: 10px 100px;
+    border: 1px solid #ccc; 
+    background-color: #ddd; 
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+  
+.mode-buttons button.active {
+    background-color: #f5f5f5; 
+    border-color: #666; 
+}
+  
+  .add-product-button {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    border: none;            
+    background: transparent; 
+    padding: 0;             
+    position: fixed;         
+    bottom: 20px;          
+    right: 20px;            
+    z-index: 1000;  
+    width: 100px;           
+    height: 100px;           
+}
+
+.add-product-button img {
+    display: block;
+    width: 100px;            
+    height: 100px; 
+}
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    color: white;                      
+    font-weight: bold;                 
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.add-product-button:active {
+    transform: scale(0.95);          
+}
+
+.shop-container {
+    display: flex;
+    padding: 20px;
+    min-height: calc(100vh - 540px); 
+  }
+  
+  .filter-container, .products-container {
+    flex: 1;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    margin: 10px;
+    padding: 10px;
+  }
+  
+  .filter-container {
+    max-width: 15%;
+    margin-right: 20px;
+  }
+  
+  .products-container {
+    max-width: 85%;
+  }
+  
+ /* .sort-container {
+    text-align: right;
+    margin: 0px; 
+    margin-top: 30px;
+    margin-right: 30px;
+}
+
+.sort-dropdown {
+    padding: 5px;
+}*/
+
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #f5f5f5; 
+    padding: 10px; 
+    border-radius: 4px; 
+}
