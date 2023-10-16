@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route  } from "react-router-dom";
 import Profile from './pages/ProfilePage/Profile';
-import ownProfile from './pages/OwnProfilePage/ownProfile';
+import OwnProfilePage from './pages/OwnProfilePage/ownProfile';
 import UserReport from "./pages/OwnProfilePage/UserReport";
 import BuyerReport from "./pages/OwnProfilePage/ฺBuyerReport";
 import BoosterReport from "./pages/OwnProfilePage/ฺBoosterReport";
@@ -30,16 +30,20 @@ function App() {
         <Route path="/" element={<Slide />} />
         <Route path="/Signin" element={<SignIn />} /> 
         <Route path="/Signup" element={<SignUp/>} /> 
+
+        
         <Route path="/BuyerReport" element={<BuyerReport />} />
         <Route path="/UserReport" element={<UserReport />} />
         <Route path="/BoosterReport" element={<BoosterReport />} />
         <Route path="/BoosterDetail" element={<BoosterDetail />} />
         <Route path="/profile/:userId" element={<ProfilePage/>} />
-        <Route path="/ownProfile" element={ownProfile()} /> 
+        <Route path="/ownProfile/:userId" element={<OwnProfilePage/>} /> 
         <Route path="/OrderDetail" element={<OrderDetail />} />
         <Route path="/CreateSellOrder" element={<CreateSellOrder />} />
         <Route path="/BoosterForm" element={<BoosterForm />} />
         <Route path="/MainShop" element={<MainShop/>} />
+
+
         <Route path="/report_ID" element={report_id()} />
         <Route path="/report_id_detail" element={report_id_detail()} />
         <Route path="/reported_booster_detailed" element={reported_booster_detail()} />

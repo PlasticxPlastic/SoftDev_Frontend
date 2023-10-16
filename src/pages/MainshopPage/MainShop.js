@@ -11,6 +11,8 @@ import SortBoost from '../../Components/SortDropdown/SortBoost';
 
 
 const MainShop = () => {
+    const token = localStorage.getItem('accessToken');
+    console.log(token);
 
     const products = [
         { id: 1, name: 'สินค้า 1', price: 100, imageURL: "https://via.placeholder.com/150x150" },

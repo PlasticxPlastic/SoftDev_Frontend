@@ -1,20 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '../../Components/Card/CardProfile';
+import Axios from 'axios';
+import { useParams } from 'react-router-dom';
 
-function ProfilePage() {
+function OwnProfilePage() {
+  const { userId } = useParams();
   const [currentState, setCurrentState] = useState('');
 
   const handleStateChange = (newState) => {
     setCurrentState(newState);
   };
 
-  const cardData = [
-    { id: 1, price: '200 baht', username: 'username1', status: 'Buying' },
-    { id: 2, price: '150 baht', username: 'username2', status: 'Selling' },
-    { id: 3, price: '300 baht', username: 'username3', status: 'Boosted' },
-    { id: 4, price: '250 baht', username: 'username4', status: 'Boosting' },
-    { id: 5, price: '180 baht', username: 'username5', status: 'Complete' },
-  ];
+  const [profileData, setProfileData] = useState({});
+
+  const [userData, setUserData] = useState({});
+
+  const [sellConfirmData, setSellConfirmData] = useState({});
+
+  const [sellingData, setSellingData] = useState({});
+
+  const [boostConfirmData, setBoostConfirmData] = useState({});
+
+  const [boostingData, setBoostingData] = useState({});
+
+  const [historyData, setHistoryData] = useState({});
+
+  const getProfileData = () => {
+    // ดึง token จาก local storage
+    const token = localStorage.getItem('accessToken');
+    console.log(token);
+  
+    if (token) {
+      Axios.get(`http://localhost:3333/profile/own/${userId}`,
+      {
+        params: {
+          'authorization': `${token}` 
+        },
+      }).then((response) => {
+        console.log("complete");
+      }).catch((error) => {
+        console.log("เกิดข้อผิดพลาดในการดึงข้อมูล");
+        console.error(error);
+      });
+    } else {
+      console.log("ไม่พบ token ใน local storage");
+    }
+  }
+
+  useEffect(() => {
+    getProfileData();
+  }, []);
   
 
   const clickableTextStyle = {
@@ -91,24 +126,6 @@ function ProfilePage() {
     color: 'black',
     fontSize: '1rem',
   };
-
-  const filteredCardData = cardData.filter((card) => {
-    switch (card.status) {
-      case 'Buying':
-        return currentState === 'BuyConfirm';
-      case 'Selling':
-        return currentState === 'SellerConfirm';
-      case 'Boosted':
-        return currentState === 'BoostConfirm';
-      case 'Boosting':
-        return currentState === 'BoosterConfirm';
-      case 'Complete':
-        return currentState === 'History';
-      default:
-        return false;
-    }
-  });
-
   
 
   return (
@@ -203,13 +220,13 @@ function ProfilePage() {
           </div>
         </div>
         <div>
-          {filteredCardData.map((card) => (
+          {/* {filteredCardData.map((card) => (
             <Card key={card.id} price={card.price} username={card.username} />            
-          ))}
+          ))} */}
         </div>
       </div>
     </div>
   );
 }
 
-export default ProfilePage;
+export default OwnProfilePage;

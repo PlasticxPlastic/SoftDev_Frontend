@@ -26,12 +26,12 @@ function ProfilePage() {
     Axios.get(`http://localhost:3333/profile/profile/${userId}`).then((response) => {
       const userData = response.data.profileData[0];
       const sellingData = response.data.accountBeingSold;
-      const boostingData = response.data.accountBeingBoosted[0];
-      const historyData = response.data.accountHistory[0];
+      const boostingData = response.data.accountBeingBoosted;
+      const historyData = response.data.accountHistory;
       setUserData(response.data.profileData[0]);
       setSellingData(response.data.accountBeingSold);
-      setBoostingData(response.data.accountBeingBoosted[0]);
-      setHistoryData(response.data.accountHistory[0]);
+      setBoostingData(response.data.accountBeingBoosted);
+      setHistoryData(response.data.accountHistory);
       console.log(userData);
       console.log(sellingData); 
       console.log(boostingData);       
