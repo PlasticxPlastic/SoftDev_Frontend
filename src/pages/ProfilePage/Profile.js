@@ -131,7 +131,7 @@ function ProfilePage() {
             src="https://media.discordapp.net/attachments/1072640218223616051/1162320754742939658/Profile_2.png?ex=653b828e&is=65290d8e&hm=2d08d1b991f77f30981391bdc11fa3f0db80b3828867926fd8e65e473dde6840&=&width=178&height=202"
             alt="Buy"
           />
-          <p style={textBelowImageStyle}>ซื้อขาย</p>
+          <p style={textBelowImageStyle}>ซื้อขายสำเร็จ {userData.selling_success || '0'} ครั้ง</p>
         </div>
         <div style={{ width: '20rem' }}></div>
         <div style={middleSectionStyle}>
@@ -142,7 +142,7 @@ function ProfilePage() {
             src="https://media.discordapp.net/attachments/1072640218223616051/1162320754742939658/Profile_2.png?ex=653b828e&is=65290d8e&hm=2d08d1b991f77f30981391bdc11fa3f0db80b3828867926fd8e65e473dde6840&=&width=178&height=202"
             alt="Profile"
           />
-          <p style={profileTextStyle}>Profile</p>
+          <p style={textBelowImageStyle}>Review Score :  {userData.review_score || '0'} </p>
         </div>
         <div style={{ width: '20rem' }}></div>
         <div style={rightSectionStyle}>
@@ -150,7 +150,7 @@ function ProfilePage() {
             src="https://media.discordapp.net/attachments/1072640218223616051/1162320754742939658/Profile_2.png?ex=653b828e&is=65290d8e&hm=2d08d1b991f77f30981391bdc11fa3f0db80b3828867926fd8e65e473dde6840&=&width=178&height=202"
             alt="Boost"
           />
-          <p style={textBelowImageStyle}>Boost</p>
+          <p style={textBelowImageStyle}>Boostสำเร็จ {userData.boosting_success || '0'} ครั้ง</p>
         </div>
       </div>
       <div></div>

@@ -40,7 +40,6 @@ function App() {
         <Route path="/CreateSellOrder" element={<CreateSellOrder />} />
         <Route path="/BoosterForm" element={<BoosterForm />} />
         <Route path="/MainShop" element={<MainShop/>} />
-
         <Route path="/report_ID" element={report_id()} />
         <Route path="/report_id_detail" element={report_id_detail()} />
         <Route path="/reported_booster_detailed" element={reported_booster_detail()} />

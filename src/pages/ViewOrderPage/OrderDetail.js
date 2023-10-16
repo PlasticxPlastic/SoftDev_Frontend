@@ -230,6 +230,7 @@ function OrderDetail() {
               <div style={smallTextBoxStyleCoupon}></div>
             </div>
           </div>
+
           <div style={{ height: '2rem' }}></div>
           <p style={smallTextBoxTitleStyle2}>ข้อมูลผู้ขาย</p>
           <div style={imageBoxStyle}>
