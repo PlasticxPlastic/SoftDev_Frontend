@@ -26,12 +26,12 @@ function ProfilePage() {
     Axios.get(`http://localhost:3333/profile/profile/${userId}`).then((response) => {
       const userData = response.data.profileData[0];
       const sellingData = response.data.accountBeingSold;
-      const boostingData = response.data.accountBeingBoosted[0];
-      const historyData = response.data.accountHistory[0];
+      const boostingData = response.data.accountBeingBoosted;
+      const historyData = response.data.accountHistory;
       setUserData(response.data.profileData[0]);
       setSellingData(response.data.accountBeingSold);
-      setBoostingData(response.data.accountBeingBoosted[0]);
-      setHistoryData(response.data.accountHistory[0]);
+      setBoostingData(response.data.accountBeingBoosted);
+      setHistoryData(response.data.accountHistory);
       console.log(userData);
       console.log(sellingData); 
       console.log(boostingData);       
@@ -193,9 +193,25 @@ function ProfilePage() {
           </div>
         </div>
         <div>
-          {currentState === 'Selling' && sellingData.map((card, index) => (
-            <Card key={index} price={card.price} username={card.user_name} order_name={card.order_name} />
-          ))}
+          {currentState === 'Selling' && (
+            sellingData
+              .filter((card) => card.status === 'Selling')
+              .map((card, index) => (
+                <Card key={index} price={card.price} username={card.user_name} order_name={card.order_name} />
+              ))
+          )}
+          {currentState === 'Boosting' && (
+            boostingData
+              .filter((card) => card.status !== 'Completed')
+              .map((card, index) => (
+                <Card key={index} price={card.price} username={card.user_name} order_name={card.order_name} />
+              ))
+          )}
+          {currentState === 'History' && (
+            historyData.map((card, index) => (
+              <Card key={index} price={card.price} username={card.user_name} order_name={card.order_name} />
+            ))
+          )}
         </div>
       </div>
     </div>

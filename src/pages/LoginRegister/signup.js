@@ -102,6 +102,7 @@ function Signup() {
     user_name: '',
     confirmPassword: '',
   });
+  
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 

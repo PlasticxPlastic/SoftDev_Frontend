@@ -113,12 +113,14 @@ function SignInPage() {
         
         // Assuming you have a token, for example:
         const token = data.accessToken;
+        const userID = data.data.userId;
 
         // Store the token in local storage
         localStorage.setItem('accessToken', token);
+        localStorage.setItem('userId', userID);
         // You can also save the accessToken and user data in the browser for authentication.
 
-        window.location.href = '/MainShop';
+        window.location.href = `/ownProfile/${userID}`;
 
       } else {
         // Handle login failure

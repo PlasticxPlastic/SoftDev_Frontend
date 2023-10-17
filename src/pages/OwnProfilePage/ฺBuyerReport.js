@@ -1,6 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 function BuyerReport() {
+  const [detail, setDetail] = useState('');
+  const [facebook, setFacebook] = useState('');
+  const [line, setLine] = useState('');
+  const [imageLink, setImageLink] = useState(''); // เพิ่ม state สำหรับเก็บลิงค์รูปภาพ
+  const {orderID} = useParams();
+  const {userID} = useParams();
+
+  var token = localStorage.getItem('accessToken');
+
+  const config = {
+    headers: {
+      authorization: `${token}`, 
+    },
+  };
+
   const greenButtonStyle = {
     width: '28rem',
     height: '3rem',
@@ -25,22 +42,16 @@ function BuyerReport() {
     backgroundColor: 'rgba(0, 0, 0, 0.25)',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center', // Center-align the content
-    justifyContent: 'center', // Center-align the content
+    alignItems: 'center',
+    justifyContent: 'center',
     padding: '2rem',
     borderRadius: '10px',
     marginRight: '2rem',
   };
 
-  const textInsideSquareStyle = {
-    fontSize: '1.5rem',
-    color: 'white',
-    marginBottom: '1rem',
-  };
-
   const squareWithTextStyle = {
-    width: '18rem',
-    height: '15rem',
+    width: '30rem',
+    height: '20rem',
     borderRadius: '10px',
     backgroundColor: 'rgba(0, 0, 0, 0.25)',
     display: 'flex',
@@ -54,37 +65,42 @@ function BuyerReport() {
     backgroundColor: 'white',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center', // Center-align all content in the right side
-    justifyContent: 'center', // Center-align all content in the right side
+    alignItems: 'center',
+    justifyContent: 'center',
     padding: '2rem',
-    marginBottom: '20rem',
+    marginBottom: '7rem',
   };
-
 
   const inputContainerStyle = {
     display: 'flex',
     flexDirection: 'column',
     marginBottom: '0.2rem',
-};
+  };
 
-const dateTimeInputStyle = {
-    width: '25rem',
-    height: '3rem',
-    borderRadius: '10px',
+  const linkInput = {
+    width: '20rem',
+    height: '2rem',
+    borderRadius: '5px',
     border: '1px solid gray',
     fontSize: '1rem',
     padding: '0.5rem',
     color: 'black',
     backgroundColor: '#D9D9D9',
-};
+  };
 
-const titleStyle = {
+  const titleStyle = {
     color: 'black',
     marginBottom: '0.5rem',
     fontSize: '1rem',
-};
+  };
 
-const inputStyle = {
+  const titleStyle1 = {
+    color: 'red',
+    marginBottom: '0.5rem',
+    fontSize: '4rem',
+  };
+
+  const largeInputStyleFacebook = {
     width: '25rem',
     height: '3rem',
     borderRadius: '10px',
@@ -92,11 +108,10 @@ const inputStyle = {
     fontSize: '1rem',
     padding: '0.5rem',
     color: 'black',
-    backgroundColor: '#D9D9D9',
-    outline: 'none',
-};
+    backgroundColor: '#17A9FD',
+  };
 
-const largeInputStyleFacebook = {
+  const largeInputStyleLine = {
     width: '25rem',
     height: '3rem',
     borderRadius: '10px',
@@ -104,82 +119,112 @@ const largeInputStyleFacebook = {
     fontSize: '1rem',
     padding: '0.5rem',
     color: 'black',
-    backgroundColor: '#17A9FD', // Color for large input 1
-};
+    backgroundColor: '#4CC764',
+  };
 
-const largeInputStyleLine = {
-    width: '25rem',
-    height: '3rem',
-    borderRadius: '10px',
-    border: '1px solid gray',
-    fontSize: '1rem',
-    padding: '0.5rem',
-    color: 'black',
-    backgroundColor: '#4CC764', // Color for large input 1
-};
-
-const largeInputStyle = {
+  const largeInputStyle = {
     width: '50rem',
     height: '20rem',
     borderRadius: '10px',
     border: '1px solid gray',
-    fontSize: '2rem',
+    fontSize: '1rem',
     padding: '0.5rem',
     color: 'black',
-    backgroundColor: '#D9D9D9', // Color for large input 1
-};
+    backgroundColor: '#D9D9D9',
+  };
 
-const largeInputContainerStyle = {
+  const largeInputContainerStyle = {
     display: 'flex',
     justifyContent: 'space-between',
     marginBottom: '0.5rem',
-};
+  };
+
+  const handleImageUpload = (e) => {
+    const link = e.target.value; // รับลิงค์รูปภาพ
+    setImageLink(link);
+  };
+
+  const handleInputChange = (e) => {
+    setDetail(e.target.value); // บันทึกรายละเอียด
+  };
+
+  const handleFacebookChange = (e) => {
+    setFacebook(e.target.value); // บันทึกลิงค์ Facebook
+  };
+
+  const handleLineChange = (e) => {
+    setLine(e.target.value); // บันทึกลิงค์ Line
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const data = {
+      orderID: orderID, // ใช้ค่า orderID ที่ถูกส่งเข้ามา
+      buffer: imageLink,
+      uid: userID,
+      detail: detail,
+      facebook: facebook,
+      line: line,
+    };
+    console.log(data);
+
+    axios.patch('http://localhost:3333/buy/setOrderStatus',{"orderID": orderID, "status" : "Pending"},config).then(() => {
+          console.log('Order status updated successfully');
+        })
+        .catch((error) => {
+          console.error('Error updating order status', error);
+        });
+
+    axios.post('http://localhost:3333/report/shop-Buyer-Report-Confirmation',data);
+
+    window.location.href = `/ownProfile/${userID}`
+  };
 
   return (
     <div style={containerStyle}>
-      {/* Left Side */}
       <div style={leftSideStyle}>
+        <p style={titleStyle}>โปรดแนบลิงค์รูปประกอบการโดนโกง</p>
+        <input
+          type="text"
+          style={{ ...linkInput }}
+          onChange={handleImageUpload}
+        />
+        <div style={{ height: '1rem' }}></div>
         <div style={squareWithTextStyle}>
-          <p style={textInsideSquareStyle}>Text Inside Square</p>
+          {imageLink && (
+            <img
+              src={imageLink}
+              alt="Uploaded Image"
+              style={{ maxWidth: '100%', maxHeight: '100%' }}
+            />
+          )}
         </div>
       </div>
 
-      {/* Right Side with Input Boxes */}
       <div style={rightSideStyle}>
-        <div style={inputContainerStyle}>
-            <p style={titleStyle}>UID</p>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <input
-                    type="text"
-                    style={{ ...inputStyle}}
-                />
-                <div style={{ width: '1rem' }}></div>
-                <input
-                    type="date"
-                    style={{ ...dateTimeInputStyle}}
-                />
-            </div>
-        </div>
-
+        <p style={titleStyle1}>กรุณากรอกข้อมูล</p>
         <div style={largeInputContainerStyle}>
-            <div style={inputContainerStyle}>
-                <p style={titleStyle}>Detail</p>
-                <textarea
-                style={{
-                    ...largeInputStyle,
-                    height: '10rem', // Set the desired height for the textarea
-                    resize: 'vertical', // Allow vertical resizing
-                }}
-                />
-            </div>
+          <div style={inputContainerStyle}>
+            <p style={titleStyle}>Detail</p>
+            <textarea
+              style={{
+                ...largeInputStyle,
+                height: '10rem',
+                resize: 'vertical',
+              }}
+              onChange={handleInputChange}
+            />
+          </div>
         </div>
 
         <div style={largeInputContainerStyle}>
           <div style={inputContainerStyle}>
-          <p style={titleStyle}>Facebook</p>
+            <p style={titleStyle}>Facebook</p>
             <input
               type="text"
-              style={{ ...largeInputStyleFacebook}}
+              style={{ ...largeInputStyleFacebook }}
+              onChange={handleFacebookChange}
             />
           </div>
           <div style={{ width: '1rem' }}></div>
@@ -187,14 +232,14 @@ const largeInputContainerStyle = {
             <p style={titleStyle}>Line</p>
             <input
               type="text"
-              style={{ ...largeInputStyleLine}}
+              style={{ ...largeInputStyleLine }}
+              onChange={handleLineChange}
             />
           </div>
         </div>
 
-
         <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1rem', marginLeft: 'auto' }}>
-            <button style={greenButtonStyle}>Submit</button>
+          <button onClick={handleSubmit} style={greenButtonStyle}>Submit</button>
         </div>
       </div>
     </div>

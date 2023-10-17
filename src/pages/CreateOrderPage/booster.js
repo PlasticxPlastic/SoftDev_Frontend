@@ -12,6 +12,10 @@ function CreateBoosterForm() {
     const [Post, setPost] = useState("");
     const [Facebook, setFacebook] = useState("");
     const [Line, setLine] = useState("");
+    const [idCardImage, setIdCardImage] = useState(null);
+    const [faceImage, setFaceImage] = useState(null);
+    const [promotionImage, setPromotionImage] = useState(null);
+
 
     const [Rank, setRank] = useState("Bronze"); // Set the default value
     const [Price, setPrice] = useState("Bronze 5$"); // Set the default value
@@ -23,37 +27,69 @@ function CreateBoosterForm() {
         // You can use the state values (orderName, numberOfHero, numberOfSkin, rank, winrate) here.
     };
 
+    const [imagePreview, setImagePreview] = useState(null);
+
+    const handleImageUpload = (e, imageType) => {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            const imagePreview = e.target.result;
+            console.log('รูปภาพที่เลือก:', imagePreview);
+      
+            if (imageType === 'idCard') {
+                setIdCardImage(imagePreview); // อัพเดทสถานะของรูปบัตรประชาชน
+            } else if (imageType === 'face') {
+                setFaceImage(imagePreview); // อัพเดทสถานะของรูปหน้าตรง
+            } else if (imageType === 'promotion') {
+                setPromotionImage(imagePreview); // อัพเดทสถานะของรูปโปรโมท
+            }
+          };
+          reader.readAsDataURL(file);
+        }
+      };
+      
+
     return (
         <div className="booster-form">
-            <label className="label-center">รูปบัตรประชาชน</label>
-            <div className="image-upload">
-                {/* Image upload box */}
-                {/* Add your image upload functionality here */}
-                <div className="image-upload-box">
-                    {/* Styling for the box */}
-                </div>
-                <input type="file" accept="image/*" /> {/* Actual file input */}
+        <label className="label-center">รูปบัตรประชาชน</label>
+        <div className="image-upload">
+            <p>อัพโหลดรูปภาพ</p>
+            <input
+                type="file"
+                accept=".png, .jpeg, .jpg"
+                onChange={(e) => handleImageUpload(e, 'idCard')} // เรียกใช้ handleImageUpload สำหรับรูปบัตรประชาชน
+            />
+            <div className="image-upload-box">
+                {idCardImage && <img src={idCardImage} alt="รูปบัตรประชาชน" className="uploaded-image" />}
             </div>
+        </div>
 
-            <label className="label-center">รูปหน้าตรง</label>
-            <div className="image-upload">
-                {/* Image upload box */}
-                {/* Add your image upload functionality here */}
-                <div className="image-upload-box">
-                    {/* Styling for the box */}
-                </div>
-                <input type="file" accept="image/*" /> {/* Actual file input */}
+        <label className="label-center">รูปหน้าตรง</label>
+        <div className="image-upload">
+            <p>อัพโหลดรูปภาพ</p>
+            <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => handleImageUpload(e, 'face')} // เรียกใช้ handleImageUpload สำหรับรูปหน้าตรง
+            />
+            <div className="image-upload-box">
+                {faceImage && <img src={faceImage} alt="รูปหน้าตรง" className="uploaded-image" />}
             </div>
+        </div>
 
-            <label className="label-center">รูปโปรโมท</label>
-            <div className="image-upload">
-                {/* Image upload box */}
-                {/* Add your image upload functionality here */}
-                <div className="image-upload-box">
-                    {/* Styling for the box */}
-                </div>
-                <input type="file" accept="image/*" /> {/* Actual file input */}
+        <label className="label-center">รูปโปรโมท</label>
+        <div className="image-upload">
+            <p>อัพโหลดรูปภาพ</p>
+            <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => handleImageUpload(e, 'promotion')} // เรียกใช้ handleImageUpload สำหรับรูปโปรโมท
+            />
+            <div className="image-upload-box">
+                {promotionImage && <img src={promotionImage} alt="รูปโปรโมท" className="uploaded-image" />}
             </div>
+        </div>
             <div className="info">
                 {/* Order information */}
                 <div className="detail-info">

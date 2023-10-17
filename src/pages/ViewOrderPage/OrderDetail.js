@@ -178,7 +178,7 @@ function OrderDetail() {
             <div style={{ height: '1rem' }}></div>
             <p style={titleStyle}>ชื่อสินค้า</p>
             <div style={textBoxStyle}>
-              <p style={titleStyleinside}>xxxxxxx</p>
+              <p style={titleStyleinside}>order_name</p>
             </div>
           </div>
           <div style={{ height: '1rem' }}></div>
@@ -186,22 +186,22 @@ function OrderDetail() {
           <div style={smallTextBoxContainerStyle}>
             <div>
               <p style={smallTextBoxTitleStyle}>จำนวนฮีโร่</p>
-              <div style={smallTextBoxStyle}></div>
+              <div style={smallTextBoxStyle}>hero_num</div>
             </div>
             <div style={{ width: '1rem' }}></div>
             <div>
               <p style={smallTextBoxTitleStyle}>จำนวนสกิน</p>
-              <div style={smallTextBoxStyle}></div>
+              <div style={smallTextBoxStyle}>skin_num</div>
             </div>
             <div style={{ width: '1rem' }}></div>
             <div>
               <p style={smallTextBoxTitleStyle}>แรงก์</p>
-              <div style={smallTextBoxStyle}></div>
+              <div style={smallTextBoxStyle}>tier</div>
             </div>
             <div style={{ width: '1rem' }}></div>
             <div>
               <p style={smallTextBoxTitleStyle}>วินเรท</p>
-              <div style={smallTextBoxStyle}></div>
+              <div style={smallTextBoxStyle}>win_rate</div>
             </div>
             <div style={{ width: '1rem' }}></div>
             <div>
@@ -212,7 +212,7 @@ function OrderDetail() {
           <div style={smallTextBoxContainerStyle}>
             <div>
               <p style={smallTextBoxTitleStyle}>ทอง</p>
-              <div style={smallTextBoxStyleGold}></div>
+              <div style={smallTextBoxStyleGold}>gold</div>
             </div>
             <div style={{ width: '1rem' }}></div>
             <div>
