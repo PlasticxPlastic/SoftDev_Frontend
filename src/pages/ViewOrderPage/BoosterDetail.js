@@ -1,19 +1,15 @@
 import React, { useState } from 'react';
 
 function BoosterDetail() {
-  const [showPopup, setShowPopup] = useState(false); // State to control the popup visibility
-
-  // Popup content
-  const popupContent = `
-    bronze 10 บาทต่อแรงก์
-    silver 10 บาทต่อแรงก์
-    gold 20 บาทต่อแรงก์
-    plat 30 บาทต่อแรงก์
-    diamond 50 บาทต่อแรงก์
-    Commander 70 บาทต่อแรงก์
-    Conqueror  80 บาทต่อดาว
-    Glorious 100 บาทต่อดาว
-  `;
+  const [showPopup, setShowPopup] = useState(false); // สถานะเพื่อควบคุมการแสดง Popup
+  // const popupContent = `
+  //   bronze 10 บาทต่อแรงก์
+  //   silver 10 บาทต่อแรงก์
+  //   gold 20 บาทต่อแรงก์
+  //   plat 30 บาทต่อแรงก์
+  //   diamond 50 บาทต่อแรงก์
+  //   Commander 70 บาทต่อแรงก์
+  // `;
 
   const containerStyle = {
     display: 'flex',
@@ -135,6 +131,7 @@ function BoosterDetail() {
     borderRadius: '10px',
     backgroundColor: '#D9D9D9',
   };
+
   const buttonStyle = {
     borderRadius: '1.25rem',
     border: '1px solid #898989',
@@ -146,12 +143,12 @@ function BoosterDetail() {
     alignItems: 'center',
     justifyContent: 'center',
   };
-  
+
   const buttonTitleStyle = {
     color: 'black',
     fontSize: '1rem',
   };
-  
+
   const buttonTextInsideStyle = {
     color: 'black',
     fontSize: '3rem',
@@ -166,17 +163,15 @@ function BoosterDetail() {
     justifyContent: 'center',
     alignItems: 'center',
   };
-  
+
   const additionalButtonTitleStyle = {
     color: 'black',
     fontSize: '1rem',
   };
 
-  // Function to toggle the popup visibility
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
-
 
   const popupStyle = {
     position: 'fixed',
@@ -195,21 +190,18 @@ function BoosterDetail() {
     justifyContent: 'space-between',
     padding: '2rem',
   };
-  
-  // Style for the popup title
+
   const popupTitleStyle = {
     fontSize: '1.5rem',
     fontWeight: 'bold',
   };
-  
-  // Style for the list of additional information
+
   const popupListStyle = {
     listStyle: 'none',
     padding: '0',
     margin: '0',
   };
-  
-  // Style for the close popup button
+
   const closePopupButtonStyle = {
     backgroundColor: '#D9D9D9',
     border: 'none',
@@ -218,8 +210,7 @@ function BoosterDetail() {
     padding: '1rem',
     cursor: 'pointer',
   };
-  
-  // Style for the text inside the close popup button
+
   const closePopupButtonTextStyle = {
     fontSize: '1rem',
   };
@@ -228,25 +219,34 @@ function BoosterDetail() {
     display: 'flex',
     flexDirection: 'column',
     marginBottom: '0.2rem',
-};
-const dropdownContainerStyle = {
-  width: '9rem',
-  height: '2rem',
-  borderRadius: '10px',
-  border: '1px solid gray',
-  fontSize: '0.9rem',
-  padding: '0.5rem',
-  color: 'black',
-  backgroundColor: '#D9D9D9', // First color
   };
 
+  const dropdownContainerStyle = {
+    width: '9rem',
+    height: '2rem',
+    borderRadius: '10px',
+    border: '1px solid gray',
+    fontSize: '0.9rem',
+    padding: '0.5rem',
+    color: 'black',
+    backgroundColor: '#D9D9D9', // สีหลัก
+  };
 
-  
+    const popupContent = `
+    bronze 10 บาทต่อแรงก์
+    silver 10 บาทต่อแรงก์
+    gold 20 บาทต่อแรงก์
+    plat 30 บาทต่อแรงก์
+    diamond 50 บาทต่อแรงก์
+    Commander 70 บาทต่อแรงก์
+`;
+
+
 
   return (
     <div style={containerStyle}>
       <div style={contentStyle}>
-        {/* Left Side */}
+        {/* ส่วนซ้ายมือ */}
         <div style={leftSideStyle}>
           <div style={roundedSquareStyle}></div>
           <div style={textBoxContainerStyle}>
@@ -257,7 +257,7 @@ const dropdownContainerStyle = {
             </div>
           </div>
           <div style={{ height: '1rem' }}></div>
-          {/* Five Text Boxes with Titles in the Same Line */}
+          {/* ช่องข้อความห้าช่องด้วยชื่อเดียวกันในบรรทัดเดียวกัน */}
           <div style={smallTextBoxContainerStyle}>
             <div>
               <p style={smallTextBoxTitleStyle}>แรงค์เริ่มต้นที่รับ</p>
@@ -275,10 +275,11 @@ const dropdownContainerStyle = {
                 style={additionalButtonStyle}
                 onClick={() => togglePopup()}
               >
-                <p style={additionalButtonTitleStyle}>Click Here</p>
+                <p style={additionalButtonTitleStyle}>คลิกที่นี่</p>
               </button>
               {showPopup && (
                 <div style={popupStyle}>
+                  <p style={popupTitleStyle}>ราคาแรงค์</p>
                   <ul style={popupListStyle}>
                     <li>bronze 10 บาทต่อแรงก์</li>
                     <li>silver 10 บาทต่อแรงก์</li>
@@ -291,9 +292,9 @@ const dropdownContainerStyle = {
                   </ul>
                   <button
                     style={closePopupButtonStyle}
-                    onClick={togglePopup} // Use the togglePopup function to close the popup
+                    onClick={togglePopup}
                   >
-                    <p style={closePopupButtonTextStyle}>Close</p>
+                    <p style={closePopupButtonTextStyle}>ปิด</p>
                   </button>
                 </div>
               )}
@@ -308,36 +309,31 @@ const dropdownContainerStyle = {
             <div style={inputContainerStyle}>
               <p style={titleStyle}>แรงค์ที่เริ่ม</p>
               <select style={dropdownContainerStyle}>
-              <option value="0">Bronze III</option>
+                <option value="0">Bronze III</option>
                 <option value="1">Bronze II</option>
                 <option value="2">Bronze I</option>
 
-                {/* Silver */}
                 <option value="3">Silver III</option>
                 <option value="4">Silver II</option>
                 <option value="5">Silver I</option>
 
-                {/* Gold */}
                 <option value="6">Gold IV</option>
                 <option value="7">Gold III</option>
                 <option value="8">Gold II</option>
                 <option value="9">Gold I</option>
 
-                {/* Platinum */}
                 <option value="10">Platinum V</option>
                 <option value="11">Platinum IV</option>
                 <option value="12">Platinum III</option>
                 <option value="13">Platinum II</option>
                 <option value="14">Platinum I</option>
 
-                {/* Diamond */}
                 <option value="15">Diamond V</option>
                 <option value="16">Diamond IV</option>
                 <option value="17">Diamond III</option>
                 <option value="18">Diamond II</option>
                 <option value="19">Diamond I</option>
 
-                {/* Commander */}
                 <option value="20">Commander V</option>
                 <option value="21">Commander IV</option>
                 <option value="22">Commander III</option>
@@ -349,36 +345,31 @@ const dropdownContainerStyle = {
             <div style={inputContainerStyle}>
               <p style={titleStyle}>แรงค์ที่ต้องการ</p>
               <select style={dropdownContainerStyle}>
-              <option value="0">Bronze III</option>
+                <option value="0">Bronze III</option>
                 <option value="1">Bronze II</option>
                 <option value="2">Bronze I</option>
 
-                {/* Silver */}
                 <option value="3">Silver III</option>
                 <option value="4">Silver II</option>
                 <option value="5">Silver I</option>
 
-                {/* Gold */}
                 <option value="6">Gold IV</option>
                 <option value="7">Gold III</option>
                 <option value="8">Gold II</option>
                 <option value="9">Gold I</option>
 
-                {/* Platinum */}
                 <option value="10">Platinum V</option>
                 <option value="11">Platinum IV</option>
                 <option value="12">Platinum III</option>
                 <option value="13">Platinum II</option>
                 <option value="14">Platinum I</option>
 
-                {/* Diamond */}
                 <option value="15">Diamond V</option>
                 <option value="16">Diamond IV</option>
                 <option value="17">Diamond III</option>
                 <option value="18">Diamond II</option>
                 <option value="19">Diamond I</option>
 
-                {/* Commander */}
                 <option value="20">Commander V</option>
                 <option value="21">Commander IV</option>
                 <option value="22">Commander III</option>
@@ -390,23 +381,23 @@ const dropdownContainerStyle = {
             <div>
               <p style={smallTextBoxTitleStyle}>ราคา</p>
               <div style={smallTextBoxStyle1}></div>
-            </div>            
+            </div>
           </div>
           <p style={smallTextBoxTitleStyle2}>ข้อมูลผู้ขาย</p>
           <div style={imageBoxStyle}>
             <img src="./Profile (1).png" alt="Product" style={imageStyle} />
             <div style={textBoxStyle}>
-              <p style={titleStyleinside}>Username</p>
+              <p style={titleStyleinside}>ชื่อผู้ใช้</p>
             </div>
           </div>
         </div>
 
-      <div style={rightSideStyle}>
-        <p style={smallTextBoxTitleStyle3}>ราคา</p>
-        <button style={buttonStyle}>
-          <p style={buttonTextInsideStyle}></p>
-        </button>
-      </div>
+        <div style={rightSideStyle}>
+          <p style={smallTextBoxTitleStyle3}>ราคา</p>
+          <button style={buttonStyle}>
+            <p style={buttonTextInsideStyle}></p>
+          </button>
+        </div>
       </div>
     </div>
   );

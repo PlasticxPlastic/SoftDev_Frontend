@@ -1,11 +1,35 @@
-import './announcing.css';
-import reported_ID_detailed from './reported_ID_detailed';
-import reported_booster from './reported_booster' ;
-import { NavLink as Link } from "react-router-dom";
-const reported_ID = ()  => {
-    return (
-      
-        <div class="home-container" id="home-container">
+import "./announcing.css";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import ImgModal from "../../Components/ImgModal/index";
+import Card from "../../Components/Card/cardReport";
+import { Link } from 'react-router-dom'; // Import Link for routing to the signin page
+
+
+function Reported_ID () {
+  let ImageUrl ="https://i.ytimg.com/vi/rpcKrZC1LT4/maxresdefault_live.jpg"
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    // สร้างฟังก์ชันเพื่อดึงข้อมูล
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:3333/report/admin-ID-Confirmation');
+        setData(response.data);
+      } catch (error) {
+        console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', error);
+      }
+    };
+
+    // เรียกใช้ฟังก์ชัน fetchData เมื่อ component ถูกโหลด
+    fetchData();
+  }, []);
+
+  console.log(data);
+
+  return (
+    <div class="home-container" id="home-container">
         <div class="full-container sticky-left">
           <div class="top-bar"></div>
           <div
@@ -39,45 +63,28 @@ const reported_ID = ()  => {
             }}
           >
             <Link to="/reported_booster" style={{color:"grey", textDecorationLine:"none", marginTop:"0.1vh"}}>
-          <h2>Booster ที่ถูกแจ้งปัญหา</h2>
-        </Link>
+              <h2>Booster ที่ถูกแจ้งปัญหา</h2>
+            </Link>
           </button>
-
-      <div class="total-post">
-          <div class="reported_container ">
-              <div class="id_catagory_top">
-                  <h4>
-                      item
-                  </h4>
-                  <h4>
-                      seller
-                  </h4>
-                  <h4>
-                      transaction
-                  </h4>
+            <div class="total-post">
+              <div class="reported_container">
+              {data.map((item, index) => (
+                <Link to={{ pathname: `/reported_ID_detailed/${index}`}} style={{ textDecoration: 'none' }}>
+                  <Card
+                    key={index}
+                    price={item.price}
+                    sid={item.sid}
+                    bid={item.bid}
+                    order_name={item.order_name}
+                  />
+                </Link>
+              ))}
               </div>
-              <mockup class ="mockup">
-              <Link to="/reported_id_detailed" style={{color:"grey", textDecorationLine:"none"}}>
-                <h2 >ID ที่ถูกแจ้งปัญหามา</h2>
-              </Link>
-                <div>
-                Just Mockup
-                </div>
-                
-              </mockup>
-
+            </div>
           </div>
+        </div>
 
+  );
+};
 
-
-          
-      </div>
-
-      
-
-  </div>
-  </div>
-    )
-  }
-  
-  export default reported_ID;
+export default Reported_ID;

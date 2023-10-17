@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Card from '../../Components/Card/CardProfile';
+import Card from '../../Components/Card/CardOwnProfile';
 import Axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 function OwnProfilePage() {
   const { userId } = useParams();
+
   const [currentState, setCurrentState] = useState('');
 
   const handleStateChange = (newState) => {
@@ -25,19 +26,35 @@ function OwnProfilePage() {
 
   const [historyData, setHistoryData] = useState({});
 
-  const getProfileData = () => {
-    // ดึง token จาก local storage
-    const token = localStorage.getItem('accessToken');
-    console.log(token);
-  
+  var token = localStorage.getItem('accessToken');
+
+  const config = {
+    headers: {
+      authorization: `${token}`, // กำหนดค่า Authorization header ด้วย Bearer token
+    },
+  }; 
+  const getProfileData = async(e) => {
     if (token) {
       Axios.get(`http://localhost:3333/profile/own/${userId}`,
-      {
-        params: {
-          'authorization': `${token}` 
-        },
-      }).then((response) => {
-        console.log("complete");
+      config).then((response) => {
+        const userData = response.data.profileData[0];
+        const sellConfirmData = response.data.OwnBoughtNotConfirmed;
+        const sellingData = response.data.OwnSoldNotConfirmed;
+        const boostConfirmData = response.data.OwnBoosted;
+        const boostingData = response.data.OwnBoosting;
+        const historyData = response.data.OwnHistory;
+        setUserData(response.data.profileData[0]);
+        setSellConfirmData(response.data.OwnBoughtNotConfirmed);
+        setSellingData(response.data.OwnSoldNotConfirmed);
+        setBoostConfirmData(response.data.OwnBoosted);
+        setBoostingData(response.data.OwnBoosting);
+        setHistoryData(response.data.OwnHistory);
+        console.log(userData);
+        console.log(sellConfirmData);
+        console.log(sellingData);
+        console.log(boostConfirmData);
+        console.log(boostingData);
+        console.log(historyData);
       }).catch((error) => {
         console.log("เกิดข้อผิดพลาดในการดึงข้อมูล");
         console.error(error);
@@ -136,16 +153,18 @@ function OwnProfilePage() {
             src="https://media.discordapp.net/attachments/1072640218223616051/1162320754742939658/Profile_2.png?ex=653b828e&is=65290d8e&hm=2d08d1b991f77f30981391bdc11fa3f0db80b3828867926fd8e65e473dde6840&=&width=178&height=202"
             alt="Buy"
           />
-          <p style={textBelowImageStyle}>ซื้อขาย</p>
+          <p style={textBelowImageStyle}>ซื้อขายสำเร็จ {userData.selling_success || '0'} ครั้ง</p>
         </div>
         <div style={{ width: '20rem' }}></div>
         <div style={middleSectionStyle}>
-          <p style={profileTextStyle}>Profile</p>
+        <p style={profileTextStyle}>
+          {userData.user_name || 'ไม่พบชื่อผู้ใช้'}
+        </p>
           <img
             src="https://media.discordapp.net/attachments/1072640218223616051/1162320754742939658/Profile_2.png?ex=653b828e&is=65290d8e&hm=2d08d1b991f77f30981391bdc11fa3f0db80b3828867926fd8e65e473dde6840&=&width=178&height=202"
             alt="Profile"
           />
-          <p style={profileTextStyle}>Profile</p>
+          <p style={textBelowImageStyle}>Review Score :  {userData.review_score || '0'} </p>
         </div>
         <div style={{ width: '20rem' }}></div>
         <div style={rightSectionStyle}>
@@ -153,7 +172,7 @@ function OwnProfilePage() {
             src="https://media.discordapp.net/attachments/1072640218223616051/1162320754742939658/Profile_2.png?ex=653b828e&is=65290d8e&hm=2d08d1b991f77f30981391bdc11fa3f0db80b3828867926fd8e65e473dde6840&=&width=178&height=202"
             alt="Boost"
           />
-          <p style={textBelowImageStyle}>Boost</p>
+          <p style={textBelowImageStyle}>Boostสำเร็จ {userData.boosting_success || '0'} ครั้ง</p>
         </div>
       </div>
       <div></div>
@@ -220,9 +239,40 @@ function OwnProfilePage() {
           </div>
         </div>
         <div>
-          {/* {filteredCardData.map((card) => (
-            <Card key={card.id} price={card.price} username={card.username} />            
-          ))} */}
+        {currentState === 'BuyConfirm' && Array.isArray(sellConfirmData) && (
+          sellConfirmData
+            .filter((card) => card.status !== 'Completed' && card.status !== 'Pending'&& card.status !== 'Reported')
+            .map((card, index) => (
+              <Card key={index} price={card.price} username={card.user_name} order_name={card.order_name} currentState={currentState} orderID={card.orderID} userID={userId} />
+            ))
+        )}
+
+          {currentState === 'SellerConfirm' && Array.isArray(sellingData) && (
+            sellingData
+              .filter((card) => card.status !== 'Completed')
+              .map((card, index) => (
+                <Card key={index} price={card.price} username={card.user_name} order_name={card.order_name}  />
+              ))
+          )}
+          {currentState === 'BoostConfirm' && Array.isArray(boostConfirmData) && (
+            boostConfirmData
+              .filter((card) => card.status !== 'Completed')
+              .map((card, index) => (
+                <Card key={index} price={card.price} username={card.user_name} order_name={card.order_name} currentState={currentState} orderID={card.boosterID} />
+              ))
+          )}
+          {currentState === 'BoosterConfirm' && Array.isArray(boostingData) && (
+            boostingData
+              .filter((card) => card.status !== 'Completed')
+              .map((card, index) => (
+                <Card key={index} price={card.price} username={card.user_name} order_name={card.order_name} />
+              ))
+          )}
+          {currentState === 'History'&& Array.isArray(historyData)  && (
+            historyData.map((card, index) => (
+              <Card key={index} price={card.price} username={card.user_name} order_name={card.order_name} />
+            ))
+          )}
         </div>
       </div>
     </div>

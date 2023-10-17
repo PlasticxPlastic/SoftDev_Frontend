@@ -1,14 +1,15 @@
 import "./announcing.css";
-import { NavLink as Link } from "react-router-dom";
-import ImgModal from "../../Components/ImgModal";
+import { Link } from "react-router-dom";
+import ImgModal from "../../Components/ImgModal/index";
+import CardProfile from "../../Components/Card/CardProfile";
+import reported_booster from "./reported_booster";
 
-import SignUp from '../LoginRegister/signup';
-import SignIn from '../LoginRegister/signin';
-import reported_booster from './reported_booster' ;
-
-import reported_ID from './reported_ID';
-import reported_ID_detailed from './reported_ID_detailed';
 const reported_booster_detailed = () => {
+  let ImageUrl ="https://i.ytimg.com/vi/rpcKrZC1LT4/maxresdefault_live.jpg"
+  let ProductName = "RoV ราคาถูก"
+  let Seller ="godIsGod"
+  let Status ="Pending"
+  let Price =200
   let userBeginImg ="https://i.ytimg.com/vi/KlSgV4wgF68/maxresdefault.jpg"
   let boosterBeginImg ="https://pic.onlinewebfonts.com/svg/img_346990.png"
   let userEndImg="https://i.ytimg.com/vi/KlSgV4wgF68/maxresdefault.jpg"
@@ -89,11 +90,16 @@ const reported_booster_detailed = () => {
         </div>
         <div class="total-post">
           <div class="reported_container ">
-            <div class="id_catagory_top">
-              <h4>item</h4>
-              <h4>seller</h4>
-              <h4>transaction</h4>
-            </div>
+            <div class="pack01">
+              <Link to="/reported_booster_detailed" style={{al:"center",color:"grey", textDecorationLine:"none", width:"min-content"}}>
+                <CardProfile style ={{width:"100vh"}}
+              imageUrl={ImageUrl}
+              productName={ProductName} status={Status} seller={Seller} price={Price} >
+                </CardProfile>
+              </Link>
+              </div>
+
+
             <div style={{ display: "flex" }}>
               <div class="photo_layer_container">
                 <h3>รูปก่อนเริ่มงาน</h3>

@@ -1,17 +1,17 @@
 import React from 'react';
 
-function Card({ price, username, order_name }) {
+function Card({ price, sid, bid , order_name }) {
   const cardStyle = {
     display: 'flex',
     flexDirection: 'row',
-    width: '80rem',
+    width: '70rem',
     height: '5rem',
     border: '1px solid #000',
     marginBottom: '1rem',
   };
 
   const leftSideStyle = {
-    flex: '30%',
+    flex: '70%',
     display: 'flex',
     alignItems: 'center',
   };
@@ -28,7 +28,7 @@ function Card({ price, username, order_name }) {
   };
 
   const rightSideStyle = {
-    flex: '70%',
+    flex: '30%',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-end',
@@ -54,11 +54,15 @@ function Card({ price, username, order_name }) {
         <div style={imageStyle}></div>
         <div style={{ width: '3rem' }}></div>
         <p style={textBelowImageStyle}>ชื่อสินค้า : {order_name}</p>
+        <div style={{ width: '1rem' }}></div>
+        <p style={usernameTextStyle}>ไอดีผู้ขาย : {bid}</p>
+        <div style={{ width: '1rem' }}></div>
+        <p style={usernameTextStyle}>ไอดีผู้ซื้อ : {sid}</p>
       </div>
       <div style={rightSideStyle}>
         <p style={priceTextStyle}>ราคา : {price} บาท</p>
         <div style={{ width: '10rem' }}></div>
-        <p style={usernameTextStyle}>คนขาย : {username}</p>
+        
       </div>
     </div>
   );

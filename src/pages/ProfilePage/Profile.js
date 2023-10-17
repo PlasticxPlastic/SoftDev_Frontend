@@ -193,9 +193,25 @@ function ProfilePage() {
           </div>
         </div>
         <div>
-          {currentState === 'Selling' && sellingData.map((card, index) => (
-            <Card key={index} price={card.price} username={card.user_name} order_name={card.order_name} />
-          ))}
+          {currentState === 'Selling' && (
+            sellingData
+              .filter((card) => card.status === 'Selling')
+              .map((card, index) => (
+                <Card key={index} price={card.price} username={card.user_name} order_name={card.order_name} />
+              ))
+          )}
+          {currentState === 'Boosting' && (
+            boostingData
+              .filter((card) => card.status !== 'Completed')
+              .map((card, index) => (
+                <Card key={index} price={card.price} username={card.user_name} order_name={card.order_name} />
+              ))
+          )}
+          {currentState === 'History' && (
+            historyData.map((card, index) => (
+              <Card key={index} price={card.price} username={card.user_name} order_name={card.order_name} />
+            ))
+          )}
         </div>
       </div>
     </div>

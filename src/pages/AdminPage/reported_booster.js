@@ -1,21 +1,14 @@
 import "./announcing.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import SignIn from "../LoginRegister/signin";
-import reported_ID from './reported_ID';
-import reported_booster_detailed from './reported_booster_detailed' ;
-import { NavLink as Link } from "react-router-dom";
-// import {
-//   Nav,
-//   NavLogo,
-//   NavLink,
-//   Bars,
-//   NavMenu,
-//   NavBtn,
-//   NavBtnLink,
-// } from "../Components/Navbar/NavbarElements";
-
-
+import ImgModal from "../../Components/ImgModal/index";
+import CardProfile from "../../Components/Card/CardProfile";
+import { Link } from 'react-router-dom'; // Import Link for routing to the signin page
 const reported_booster = () => {
+  
+  let ImageUrl ="https://i.ytimg.com/vi/rpcKrZC1LT4/maxresdefault_live.jpg"
+let ProductName = "RoV ราคาถูก"
+let Seller ="godIsGod"
+let Status ="Pending"
+let Price =200
   return (
     <div class="home-container" id="home-container">
       <div class="full-container sticky-left">
@@ -28,7 +21,7 @@ const reported_booster = () => {
             marginLeft: ".4vh",
             backgroundColor: "transparent",
           }}
-        >            <Link to="/report_ID" style={{color:"grey", textDecorationLine:"none", marginTop:"0.1vh"}}>
+        >            <Link to="/reported_ID" style={{color:"grey", textDecorationLine:"none", marginTop:"0.1vh"}}>
           <h2>ID ที่ถูกแจ้งปัญหามา</h2>
       </Link>
 
@@ -53,20 +46,14 @@ const reported_booster = () => {
         </div>
         <div class="total-post">
           <div class="reported_container ">
-            <div class="id_catagory_top">
-              <h4>item</h4>
-              <h4>seller</h4>
-              <h4>transaction</h4>
-            </div>
-            <mockup class ="mockup">
-              <Link to="/reported_booster_detailed" style={{color:"grey", textDecorationLine:"none"}}>
-                <h2 >Booster ที่ถูกแจ้งปัญหามา</h2>
+            <div class="pack01">
+              <Link to="/reported_booster_detailed" style={{al:"center",color:"grey", textDecorationLine:"none", width:"min-content"}}>
+                <CardProfile style ={{width:"100vh"}}
+              imageUrl={ImageUrl}
+              productName={ProductName} status={Status} seller={Seller} price={Price} >
+                </CardProfile>
               </Link>
-                <div>
-                Just Mockup
-                </div>
-                
-              </mockup>
+              </div>
 
           </div>
         </div>
