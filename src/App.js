@@ -30,20 +30,19 @@ function App() {
         <Route path="/" element={<Slide />} />
         <Route path="/Signin" element={<SignIn />} /> 
         <Route path="/Signup" element={<SignUp/>} /> 
-
-        
-        <Route path="/BuyerReport/:userID/:orderID" element={<BuyerReport />} />
-        <Route path="/UserReport/:userID/:boostingID" element={<UserReport />} />
         <Route path="/BoosterReport" element={<BoosterReport />} />
         <Route path="/BoosterDetail" element={<BoosterDetail />} />
-        <Route path="/profile/:userId" element={<ProfilePage/>} />
-        <Route path="/ownProfile/:userId" element={<OwnProfilePage/>} /> 
         <Route path="/OrderDetail" element={<OrderDetail />} />
         <Route path="/CreateSellOrder" element={<CreateSellOrder />} />
         <Route path="/BoosterForm" element={<BoosterForm />} />
         <Route path="/MainShop" element={<MainShop/>} />
 
+        {/* OHMM */}
 
+        <Route path="/profile/:userId" element={<ProfilePage/>} />
+        <Route path="/ownProfile/:userId" element={<OwnProfilePage/>} /> 
+        <Route path="/BuyerReport/:userID/:orderID" element={<BuyerReport />} />
+        <Route path="/UserReport/:userID/:boostingID" element={<UserReport />} />
         <Route path="/reported_ID" element={<Reported_ID/>} />
         <Route path="/reported_ID_detailed/:id" element={<Reported_ID_detailed/>} />
         <Route path="/reported_booster_detailed/:id/:eid" element={<Reported_booster_detail/>} />

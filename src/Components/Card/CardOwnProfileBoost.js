@@ -93,14 +93,15 @@ function CardBoost({price, after_tier, before_tier, user_name, currentState, typ
 
   const handleGreenButtonClick = () => {
     if (isBuyConfirm) {
-      Axios.patch('http://localhost:3333/report/set_report_order_boost_status',{"boostingID": boostingID, "status" : "Completed"}).then(() => {
-          console.log('Order status updated successfully');
-        })
-        .catch((error) => {
-          console.error('Error updating order status', error);
-        });
-        window.location.reload();
+
     } else if (isBoostConfirm) {
+      Axios.patch('http://localhost:3333/report/set_report_order_boost_status',{"boostingID": boostingID, "status" : "Completed"}).then(() => {
+        console.log('Order status updated successfully');
+      })
+      .catch((error) => {
+        console.error('Error updating order status', error);
+      });
+      window.location.reload();
     }
   };
 
