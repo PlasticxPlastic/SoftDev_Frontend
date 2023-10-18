@@ -1,14 +1,28 @@
 import "./announcing.css";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import ImgModal from "../../Components/ImgModal/index";
-import CardProfile from "../../Components/Card/CardProfile";
+import CardBoost from "../../Components/Card/cardReportBoost";
 import { Link } from 'react-router-dom'; // Import Link for routing to the signin page
-const reported_booster = () => {
-  
-  let ImageUrl ="https://i.ytimg.com/vi/rpcKrZC1LT4/maxresdefault_live.jpg"
-let ProductName = "RoV ราคาถูก"
-let Seller ="godIsGod"
-let Status ="Pending"
-let Price =200
+
+function Reported_booster () {
+
+  const [data, setData] = useState([]);
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:3333/report/admin-Boosting-Confirmtaion');
+        setData(response.data);
+      } catch (error) {
+        console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  console.log(data);
   return (
     <div class="home-container" id="home-container">
       <div class="full-container sticky-left">
@@ -21,7 +35,7 @@ let Price =200
             marginLeft: ".4vh",
             backgroundColor: "transparent",
           }}
-        >            <Link to="/reported_ID" style={{color:"grey", textDecorationLine:"none", marginTop:"0.1vh"}}>
+        ><Link to="/reported_ID" style={{color:"grey", textDecorationLine:"none", marginTop:"0.1vh"}}>
           <h2>ID ที่ถูกแจ้งปัญหามา</h2>
       </Link>
 
@@ -46,15 +60,17 @@ let Price =200
         </div>
         <div class="total-post">
           <div class="reported_container ">
-            <div class="pack01">
-              <Link to="/reported_booster_detailed" style={{al:"center",color:"grey", textDecorationLine:"none", width:"min-content"}}>
-                <CardProfile style ={{width:"100vh"}}
-              imageUrl={ImageUrl}
-              productName={ProductName} status={Status} seller={Seller} price={Price} >
-                </CardProfile>
-              </Link>
-              </div>
-
+            {data.map((item, index) => (
+                <Link to={{ pathname: `/reported_booster_detailed/${index}/${item.eid}`}} style={{ textDecoration: 'none' }}>
+                  <CardBoost
+                    key={index}
+                    price={item.price}
+                    user_name={item.user_name}
+                    before_tier={item.before_tier}
+                    after_tier={item.after_tier}
+                  />
+                </Link>
+            ))}
           </div>
         </div>
       </div>
@@ -62,4 +78,4 @@ let Price =200
   );
 };
 
-export default reported_booster;
+export default Reported_booster;

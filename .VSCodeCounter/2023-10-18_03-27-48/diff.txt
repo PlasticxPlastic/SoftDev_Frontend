@@ -1,0 +1,79 @@
+Date : 2023-10-18 03:27:48
+Directory : c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend
+Total : 38 files,  19927 codes, 53 comments, 264 blanks, all 20244 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JSON       |          3 |     18,125 |          0 |          3 |     18,128 |
+| JavaScript |         20 |      1,163 |         19 |        129 |      1,311 |
+| CSS        |         13 |        578 |         11 |         98 |        687 |
+| Markdown   |          1 |         38 |          0 |         33 |         71 |
+| HTML       |          1 |         23 |         23 |          1 |         47 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                                   | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                                      |         38 |     19,927 |         53 |        264 |     20,244 |
+| . (Files)                                                                                                                              |          3 |     18,138 |          0 |         35 |     18,173 |
+| public                                                                                                                                 |          2 |         48 |         23 |          2 |         73 |
+| src                                                                                                                                    |         33 |      1,741 |         30 |        227 |      1,998 |
+| src (Files)                                                                                                                            |          9 |        451 |         10 |         50 |        511 |
+| src\Components                                                                                                                         |         24 |      1,290 |         20 |        177 |      1,487 |
+| src\Components\AddProductButton                                                                                                        |          6 |        130 |          0 |         15 |        145 |
+| src\Components\Card                                                                                                                    |          3 |        231 |          1 |         45 |        277 |
+| src\Components\Filter                                                                                                                  |          4 |        314 |          2 |         37 |        353 |
+| src\Components\ImgModal                                                                                                                |          1 |         66 |          6 |         12 |         84 |
+| src\Components\Navbar                                                                                                                  |          2 |        389 |          5 |         43 |        437 |
+| src\Components\ProductCard                                                                                                             |          2 |         47 |          2 |          7 |         56 |
+| src\Components\Slide                                                                                                                   |          2 |         67 |          0 |         12 |         79 |
+| src\Components\SortDropdown                                                                                                            |          4 |         46 |          4 |          6 |         56 |
++----------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                                               | language   | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\README.md                                            | Markdown   |         38 |          0 |         33 |         71 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\package-lock.json                                    | JSON       |     18,051 |          0 |          1 |     18,052 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\package.json                                         | JSON       |         49 |          0 |          1 |         50 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\public\index.html                                    | HTML       |         23 |         23 |          1 |         47 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\public\manifest.json                                 | JSON       |         25 |          0 |          1 |         26 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\App.css                                          | CSS        |         33 |          0 |          6 |         39 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\App.js                                           | JavaScript |         49 |          0 |          8 |         57 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\App.test.js                                      | JavaScript |          7 |          0 |          2 |          9 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\Components\AddProductButton\AddBoost.css         | CSS        |         32 |          0 |          3 |         35 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\Components\AddProductButton\AddBoost.js          | JavaScript |         11 |          0 |          2 |         13 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\Components\AddProductButton\AddID.css            | CSS        |         32 |          0 |          3 |         35 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\Components\AddProductButton\AddID.js             | JavaScript |         11 |          0 |          2 |         13 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\Components\AddProductButton\AddProductButton.css | CSS        |         32 |          0 |          3 |         35 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\Components\AddProductButton\AddProductButton.js  | JavaScript |         12 |          0 |          2 |         14 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\Components\Card\CardOwnProfile.js                | JavaScript |        114 |          1 |         22 |        137 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\Components\Card\CardProfile.js                   | JavaScript |         57 |          0 |         11 |         68 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\Components\Card\cardReport.js                    | JavaScript |         60 |          0 |         12 |         72 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\Components\Filter\FilterBoost.css                | CSS        |         35 |          1 |          6 |         42 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\Components\Filter\FilterBoost.js                 | JavaScript |        114 |          0 |         12 |        126 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\Components\Filter\FilterID.css                   | CSS        |         35 |          1 |          6 |         42 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\Components\Filter\FilterID.js                    | JavaScript |        130 |          0 |         13 |        143 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\Components\ImgModal\index.js                     | JavaScript |         66 |          6 |         12 |         84 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\Components\Navbar\index.js                       | JavaScript |        202 |          0 |          4 |        206 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\Components\Navbar\nav.css                        | CSS        |        187 |          5 |         39 |        231 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\Components\ProductCard\ProductCard.css           | CSS        |         35 |          1 |          4 |         40 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\Components\ProductCard\ProductCard.js            | JavaScript |         12 |          1 |          3 |         16 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\Components\Slide\slide.css                       | CSS        |         43 |          0 |          8 |         51 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\Components\Slide\slide.js                        | JavaScript |         24 |          0 |          4 |         28 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\Components\SortDropdown\SortBoost.css            | CSS        |          9 |          1 |          1 |         11 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\Components\SortDropdown\SortBoost.js             | JavaScript |         14 |          1 |          2 |         17 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\Components\SortDropdown\SortID.css               | CSS        |          9 |          1 |          1 |         11 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\Components\SortDropdown\SortID.js                | JavaScript |         14 |          1 |          2 |         17 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\booster.css                                      | CSS        |         81 |          1 |         15 |         97 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\booster.js                                       | JavaScript |        241 |          2 |         10 |        253 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\index.css                                        | CSS        |         15 |          0 |          3 |         18 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\index.js                                         | JavaScript |         12 |          3 |          3 |         18 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\reportWebVitals.js                               | JavaScript |         12 |          0 |          2 |         14 |
+| c:\Users\66918\Desktop\Year3-Semaster1\SoftWareDev\softdev_front\SoftDev_Frontend\src\setupTests.js                                    | JavaScript |          1 |          4 |          1 |          6 |
+| Total                                                                                                                                  |            |     19,927 |         53 |        264 |     20,244 |
++----------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

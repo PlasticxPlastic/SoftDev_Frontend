@@ -31,7 +31,6 @@ function Reported_ID_detailed() {
         const response = await axios.get('http://localhost:3333/report/admin-ID-Confirmation');
         setData(response.data[id]);
 
-        // data.bid และ data.sid สามารถเปลี่ยนไปเป็นแบบนี้เพื่อป้องกันข้อผิดพลาดหากข้อมูลยังไม่พร้อมใช้งาน
         const buyerId = data.bid - 1;
         const sellerId = data.sid - 1;
 

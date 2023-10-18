@@ -3,9 +3,7 @@ import Axios from 'axios';
 import { Link } from 'react-router-dom';
 
 
-function Card({ price, seller_user_name
-  , order_name, currentState, orderID, userID, buyer_user_name}) {  
-
+function CardBoost({price, after_tier, before_tier, user_name, currentState, type, userID, boostingID}) {  
 
   const cardStyle = {
     display: 'flex',
@@ -94,23 +92,23 @@ function Card({ price, seller_user_name
   };
 
   const handleGreenButtonClick = () => {
-    if (isBuyConfirm) {
-      Axios.patch('http://localhost:3333/buy/setOrderStatus',{"orderID": orderID, "status" : "Completed"},config).then(() => {
-          console.log('Order status updated successfully');
-        })
-        .catch((error) => {
-          console.error('Error updating order status', error);
-        });
-        window.location.reload();
-    } else if (isBoostConfirm) {
-    }
+    // if (isBuyConfirm) {
+    //   Axios.patch('http://localhost:3333/buy/setOrderStatus',{"orderID": orderID, "status" : "Completed"},config).then(() => {
+    //       console.log('Order status updated successfully');
+    //     })
+    //     .catch((error) => {
+    //       console.error('Error updating order status', error);
+    //     });
+    //     window.location.reload();
+    // } else if (isBoostConfirm) {
+    // }
   };
 
   const handleRedButtonClick = () => {
     if (isBuyConfirm) {
-        window.location.href = `/BuyerReport/${userID}/${orderID}`;
+        //sad
     } else if (isBoostConfirm) {
-      // ทำงานเมื่อปุ่มสีแดงใน BoostConfirm ถูกคลิก
+      window.location.href = `/UserReport/${userID}/${boostingID}`;
     }
   };
 
@@ -119,18 +117,18 @@ function Card({ price, seller_user_name
       <div style={leftSideStyle}>
         <div style={imageStyle}></div>
         <div style={{ width: '3rem' }}></div>
-        <p style={textBelowImageStyle}>ชื่อสินค้า : {order_name}</p>
-        <div style={{ width: '3rem' }}></div>
-        <p style={priceTextStyle1}>
-          {buyer_user_name !== null ? `คนซื้อ : ${buyer_user_name}` : 'กำลังขาย'}
-        </p>
-
+        <p style={textBelowImageStyle}>ผู้ว่าจ้าง : {user_name}</p>
       </div>
       <div style={rightSideStyle}>
+      {price !== 0 ? (
         <p style={priceTextStyle}>ราคา : {price} บาท</p>
-        <div style={{ width: '10rem' }}></div>
-        <p style={usernameTextStyle}>คนขาย : {seller_user_name}</p>
-        <div style={{ width: '2rem' }}></div>
+      ) : (
+        <p style={priceTextStyle}>ประเภท : {type}</p>
+      )}
+
+        <div style={{ width: '3rem' }}></div>
+        <p style={usernameTextStyle}>{before_tier} - {after_tier}</p>
+        <div style={{ width: '3rem' }}></div>
         {isBuyConfirm || isBoostConfirm ? (
           <div style={buttonContainerStyle}>
             <button style={greenButtonStyle} onClick={handleGreenButtonClick}>
@@ -146,4 +144,4 @@ function Card({ price, seller_user_name
   );
 }
 
-export default Card;
+export default CardBoost;

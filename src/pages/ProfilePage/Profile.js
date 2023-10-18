@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Card from '../../Components/Card/CardProfile';
+import CardBoost from '../../Components/Card/CardProfileBoost'
 import Axios from 'axios';
 import { useParams } from 'react-router-dom';
 
@@ -13,6 +14,10 @@ function ProfilePage() {
   };
 
   const [profileData, setProfileData] = useState({});
+
+  const [buySuccessCount, setBuySuccessCount] = useState();
+
+  const [boostSuccessCount, setBoostSuccessCount] = useState();
 
   const [userData, setUserData] = useState({});
 
@@ -36,6 +41,8 @@ function ProfilePage() {
       console.log(sellingData); 
       console.log(boostingData);       
       console.log(historyData); 
+      setBuySuccessCount(historyData.filter(card => card.type === 'Buying' || card.type === 'Selling').length);
+      setBoostSuccessCount(historyData.filter(card => card.type === 'Boosting' || card.type === 'Boosted').length);
     });
   }
   
@@ -44,9 +51,8 @@ function ProfilePage() {
     getProfileData();
   }, []);
 
+  
 
-  
-  
 
   const clickableTextStyle = {
     color: 'black',
@@ -131,7 +137,7 @@ function ProfilePage() {
             src="https://media.discordapp.net/attachments/1072640218223616051/1162320754742939658/Profile_2.png?ex=653b828e&is=65290d8e&hm=2d08d1b991f77f30981391bdc11fa3f0db80b3828867926fd8e65e473dde6840&=&width=178&height=202"
             alt="Buy"
           />
-          <p style={textBelowImageStyle}>ซื้อขายสำเร็จ {userData.selling_success || '0'} ครั้ง</p>
+          <p style={textBelowImageStyle}>ซื้อขายสำเร็จ {buySuccessCount} ครั้ง</p>
         </div>
         <div style={{ width: '20rem' }}></div>
         <div style={middleSectionStyle}>
@@ -150,7 +156,7 @@ function ProfilePage() {
             src="https://media.discordapp.net/attachments/1072640218223616051/1162320754742939658/Profile_2.png?ex=653b828e&is=65290d8e&hm=2d08d1b991f77f30981391bdc11fa3f0db80b3828867926fd8e65e473dde6840&=&width=178&height=202"
             alt="Boost"
           />
-          <p style={textBelowImageStyle}>Boostสำเร็จ {userData.boosting_success || '0'} ครั้ง</p>
+          <p style={textBelowImageStyle}>Boostสำเร็จ {boostSuccessCount} ครั้ง</p>
         </div>
       </div>
       <div></div>
@@ -204,12 +210,19 @@ function ProfilePage() {
             boostingData
               .filter((card) => card.status !== 'Completed')
               .map((card, index) => (
-                <Card key={index} price={card.price} username={card.user_name} order_name={card.order_name} />
+                <CardBoost key={index} price={card.price} username={card.user_name} after_tier={card.after_tier} before_tier={card.before_tier} />
               ))
           )}
           {currentState === 'History' && (
             historyData.map((card, index) => (
-              <Card key={index} price={card.price} username={card.user_name} order_name={card.order_name} />
+              <div key={index}>
+                {card.type === 'Buying' || card.type === 'Selling' ? (
+                  <Card key={index} price={0} username={card.user_name} order_name={card.order_name} type={card.type} />
+                ) : (
+                  <CardBoost key={index} price={0} username={card.user_name} after_tier={card.after_tier} before_tier={card.before_tier} type={card.type} />
+                )}
+
+              </div>
             ))
           )}
         </div>
