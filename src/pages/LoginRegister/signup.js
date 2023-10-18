@@ -101,6 +101,8 @@ function Signup() {
     con_num: '',
     user_name: '',
     confirmPassword: '',
+    review_score: 0,
+    review_count: 0
   });
   
   const handleFormSubmit = async (e) => {
@@ -119,6 +121,7 @@ function Signup() {
         // Registration successful
         console.log("Registration successful");
         alert("Registration successful");
+        window.location.href = `/signin`;
       } else if (response.data.error === "Email already exists!") {
         // Handle the case where the email already exists
         console.log("Email already exists. Please use a different email.");

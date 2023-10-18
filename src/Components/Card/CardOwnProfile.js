@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
+import Modal from 'react-modal';
+
 
 
 function Card({ price, seller_user_name
   , order_name, currentState, orderID, userID, buyer_user_name}) {  
+    
 
 
   const cardStyle = {
@@ -101,7 +104,7 @@ function Card({ price, seller_user_name
         .catch((error) => {
           console.error('Error updating order status', error);
         });
-        window.location.reload();
+        window.location.href = `/ReviewPage/${userID}`;
     } else if (isBoostConfirm) {
     }
   };

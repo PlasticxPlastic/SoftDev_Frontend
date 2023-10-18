@@ -20,6 +20,7 @@ import Reported_booster from "./pages/AdminPage/reported_booster";
 import Reported_booster_detail from "./pages/AdminPage/reported_booster_detailed";
 import BoosterDetail from "./pages/ViewOrderPage/BoosterDetail";
 import ProfilePage from "./pages/ProfilePage/Profile";
+import ReviewPage from './pages/OwnProfilePage/ReviewPage'; // นำเข้า ReviewPage
 
 
 function App() {
@@ -47,6 +48,8 @@ function App() {
         <Route path="/reported_ID_detailed/:id" element={<Reported_ID_detailed/>} />
         <Route path="/reported_booster_detailed/:id/:eid" element={<Reported_booster_detail/>} />
         <Route path="/reported_booster" element={<Reported_booster/>} />
+        <Route path="/ReviewPage/:uid" element={<ReviewPage/>} />
+        
       </Routes>
     </BrowserRouter>
   );
