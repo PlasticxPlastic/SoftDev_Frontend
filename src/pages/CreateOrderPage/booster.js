@@ -204,14 +204,36 @@ function CreateBoosterForm() {
                                 onChange={(e) => setRank(e.target.value)}
                             >
                                 {/* Populate the dropdown with the desired options */}
-                                <option value="Bronze">Bronze</option>
-                                <option value="Silver">Silver</option>
-                                <option value="Gold">Gold</option>
-                                <option value="Platinum">Platinum</option>
-                                <option value="Diamond">Diamond</option>
-                                <option value="Commander">Commander</option>
-                                <option value="Conqueror">Conqueror</option>
-                                <option value="Glorious Ruler">Glorious Ruler</option>
+                                <option value="0">Bronze III</option>
+                                <option value="1">Bronze II</option>
+                                <option value="2">Bronze I</option>
+
+                                <option value="3">Silver III</option>
+                                <option value="4">Silver II</option>
+                                <option value="5">Silver I</option>
+
+                                <option value="6">Gold IV</option>
+                                <option value="7">Gold III</option>
+                                <option value="8">Gold II</option>
+                                <option value="9">Gold I</option>
+
+                                <option value="10">Platinum V</option>
+                                <option value="11">Platinum IV</option>
+                                <option value="12">Platinum III</option>
+                                <option value="13">Platinum II</option>
+                                <option value="14">Platinum I</option>
+
+                                <option value="15">Diamond V</option>
+                                <option value="16">Diamond IV</option>
+                                <option value="17">Diamond III</option>
+                                <option value="18">Diamond II</option>
+                                <option value="19">Diamond I</option>
+
+                                <option value="20">Commander V</option>
+                                <option value="21">Commander IV</option>
+                                <option value="22">Commander III</option>
+                                <option value="23">Commander II</option>
+                                <option value="24">Commander I</option>
                             </select>
                         </div>
                     </div>
@@ -242,14 +264,36 @@ function CreateBoosterForm() {
                                 onChange={(e) => setHighestRank(e.target.value)}
                             >
                                 {/* Populate the dropdown with the desired options */}
-                                <option value="Bronze">Bronze</option>
-                                <option value="Silver">Silver</option>
-                                <option value="Gold">Gold</option>
-                                <option value="Platinum">Platinum</option>
-                                <option value="Diamond">Diamond</option>
-                                <option value="Commander">Commander</option>
-                                <option value="Conqueror">Conqueror</option>
-                                <option value="Glorious Ruler">Glorious Ruler</option>
+                                <option value="0">Bronze III</option>
+                                <option value="1">Bronze II</option>
+                                <option value="2">Bronze I</option>
+
+                                <option value="3">Silver III</option>
+                                <option value="4">Silver II</option>
+                                <option value="5">Silver I</option>
+
+                                <option value="6">Gold IV</option>
+                                <option value="7">Gold III</option>
+                                <option value="8">Gold II</option>
+                                <option value="9">Gold I</option>
+
+                                <option value="10">Platinum V</option>
+                                <option value="11">Platinum IV</option>
+                                <option value="12">Platinum III</option>
+                                <option value="13">Platinum II</option>
+                                <option value="14">Platinum I</option>
+
+                                <option value="15">Diamond V</option>
+                                <option value="16">Diamond IV</option>
+                                <option value="17">Diamond III</option>
+                                <option value="18">Diamond II</option>
+                                <option value="19">Diamond I</option>
+
+                                <option value="20">Commander V</option>
+                                <option value="21">Commander IV</option>
+                                <option value="22">Commander III</option>
+                                <option value="23">Commander II</option>
+                                <option value="24">Commander I</option>
                             </select>
                         </div>
                     </div>

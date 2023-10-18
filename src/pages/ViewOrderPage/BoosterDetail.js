@@ -239,7 +239,7 @@ function BoosterDetail() {
     plat 30 บาทต่อแรงก์
     diamond 50 บาทต่อแรงก์
     Commander 70 บาทต่อแรงก์
-`;
+    `;
 
 
 

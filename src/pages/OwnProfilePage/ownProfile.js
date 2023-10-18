@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import Card from '../../Components/Card/CardOwnProfile';
+import CardBoost from '../../Components/Card/CardOwnProfileBoost';
 import Axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 function OwnProfilePage() {
   const { userId } = useParams();
-
   const [currentState, setCurrentState] = useState('');
 
   const handleStateChange = (newState) => {
     setCurrentState(newState);
   };
+  
+  const [buySuccessCount, setBuySuccessCount] = useState();
+
+  const [boostSuccessCount, setBoostSuccessCount] = useState();
 
   const [profileData, setProfileData] = useState({});
 
@@ -55,6 +59,10 @@ function OwnProfilePage() {
         console.log(boostConfirmData);
         console.log(boostingData);
         console.log(historyData);
+        setBuySuccessCount(historyData.filter((item) => item.type === 'ส่งมอบไอดีเรียบร้อยแล้ว' || item.type === 'ได้รับไอดีเรียบร้อยแล้ว').length);
+        setBoostSuccessCount(historyData.filter((item) => item.type === 'ได้รับการบูสเรียบร้อยแล้ว' || item.type === 'ส่งมอบไอดีเรียบร้อยแล้ว').length);
+        
+        
       }).catch((error) => {
         console.log("เกิดข้อผิดพลาดในการดึงข้อมูล");
         console.error(error);
@@ -143,6 +151,7 @@ function OwnProfilePage() {
     color: 'black',
     fontSize: '1rem',
   };
+
   
 
   return (
@@ -153,7 +162,7 @@ function OwnProfilePage() {
             src="https://media.discordapp.net/attachments/1072640218223616051/1162320754742939658/Profile_2.png?ex=653b828e&is=65290d8e&hm=2d08d1b991f77f30981391bdc11fa3f0db80b3828867926fd8e65e473dde6840&=&width=178&height=202"
             alt="Buy"
           />
-          <p style={textBelowImageStyle}>ซื้อขายสำเร็จ {userData.selling_success || '0'} ครั้ง</p>
+          <p style={textBelowImageStyle}>ซื้อขายสำเร็จ {buySuccessCount} ครั้ง</p>
         </div>
         <div style={{ width: '20rem' }}></div>
         <div style={middleSectionStyle}>
@@ -172,7 +181,7 @@ function OwnProfilePage() {
             src="https://media.discordapp.net/attachments/1072640218223616051/1162320754742939658/Profile_2.png?ex=653b828e&is=65290d8e&hm=2d08d1b991f77f30981391bdc11fa3f0db80b3828867926fd8e65e473dde6840&=&width=178&height=202"
             alt="Boost"
           />
-          <p style={textBelowImageStyle}>Boostสำเร็จ {userData.boosting_success || '0'} ครั้ง</p>
+          <p style={textBelowImageStyle}>Boostสำเร็จ {boostSuccessCount} ครั้ง</p>
         </div>
       </div>
       <div></div>
@@ -243,34 +252,63 @@ function OwnProfilePage() {
           sellConfirmData
             .filter((card) => card.status !== 'Completed' && card.status !== 'Pending'&& card.status !== 'Reported')
             .map((card, index) => (
-              <Card key={index} price={card.price} username={card.user_name} order_name={card.order_name} currentState={currentState} orderID={card.orderID} userID={userId} />
+              <Card key={index} price={card.price} seller_user_name={card.seller_user_name} order_name={card.order_name} 
+                currentState={currentState} orderID={card.orderID} userID={userId} buyer_user_name={card.buyer_user_name}  />
             ))
         )}
 
           {currentState === 'SellerConfirm' && Array.isArray(sellingData) && (
             sellingData
-              .filter((card) => card.status !== 'Completed')
+              .filter((card) => card.status !== 'Completed' && card.status !== 'Pending'&& card.status !== 'Reported')
               .map((card, index) => (
-                <Card key={index} price={card.price} username={card.user_name} order_name={card.order_name}  />
+                <Card key={index} price={card.price} seller_user_name={card.seller_user_name} order_name={card.order_name} 
+                currentState={currentState} orderID={card.orderID} userID={userId} buyer_user_name={card.buyer_user_name}  />
               ))
           )}
           {currentState === 'BoostConfirm' && Array.isArray(boostConfirmData) && (
             boostConfirmData
-              .filter((card) => card.status !== 'Completed')
+              .filter((card) => card.status !== 'Completed' && card.status !== 'Pending'&& card.status !== 'Reported')
               .map((card, index) => (
-                <Card key={index} price={card.price} username={card.user_name} order_name={card.order_name} currentState={currentState} orderID={card.boosterID} />
+                <CardBoost key={index} price={card.price} 
+                after_tier={card.after_tier} before_tier={card.before_tier} 
+                currentState={currentState} user_name={card.user_name}
+                userID={userId} boostingID={card.boostingID} />
               ))
           )}
           {currentState === 'BoosterConfirm' && Array.isArray(boostingData) && (
             boostingData
-              .filter((card) => card.status !== 'Completed')
+              .filter((card) => card.status !== 'Completed' && card.status !== 'Pending'&& card.status !== 'Reported')
               .map((card, index) => (
-                <Card key={index} price={card.price} username={card.user_name} order_name={card.order_name} />
+                <CardBoost key={index} price={card.price} 
+                after_tier={card.after_tier} before_tier={card.before_tier} 
+                currentState={currentState} user_name={card.user_name} />
               ))
           )}
-          {currentState === 'History'&& Array.isArray(historyData)  && (
+          {currentState === 'History' && Array.isArray(historyData) && (
             historyData.map((card, index) => (
-              <Card key={index} price={card.price} username={card.user_name} order_name={card.order_name} />
+              <div key={index}>
+                {card.type === 'ได้รับไอดีเรียบร้อยแล้ว' || card.type === 'ส่งมอบไอดีเรียบร้อยแล้ว' ? (
+                  <Card
+                    price={card.price}
+                    seller_user_name={card.seller_user_name}
+                    order_name={card.order_name}
+                    currentState={currentState}
+                    orderID={card.orderID}
+                    userID={userId}
+                    buyer_user_name={card.buyer_user_name}
+                  />
+                ) : (
+                  <CardBoost
+                    type = {card.type}
+                    price={0}
+                    after_tier={card.after_tier}
+                    before_tier={card.before_tier}
+                    currentState={currentState}
+                    user_name={card.buyer_user_name}
+                  />
+                )}
+
+              </div>
             ))
           )}
         </div>

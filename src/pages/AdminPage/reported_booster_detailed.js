@@ -1,55 +1,64 @@
 import "./announcing.css";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import ImgModal from "../../Components/ImgModal/index";
-import CardProfile from "../../Components/Card/CardProfile";
-import reported_booster from "./reported_booster";
+import CardBoost from "../../Components/Card/cardReportBoost";
+import { Link, useParams } from 'react-router-dom'; // Import Link for routing to the signin page
 
-const reported_booster_detailed = () => {
-  let ImageUrl ="https://i.ytimg.com/vi/rpcKrZC1LT4/maxresdefault_live.jpg"
-  let ProductName = "RoV ราคาถูก"
-  let Seller ="godIsGod"
-  let Status ="Pending"
-  let Price =200
-  let userBeginImg ="https://i.ytimg.com/vi/KlSgV4wgF68/maxresdefault.jpg"
-  let boosterBeginImg ="https://pic.onlinewebfonts.com/svg/img_346990.png"
-  let userEndImg="https://i.ytimg.com/vi/KlSgV4wgF68/maxresdefault.jpg"
-  let boosterEndImg="https://pic.onlinewebfonts.com/svg/img_346990.png"
-  let userID = "userID"
-  let date ="วัน/เดือน/ปี"
-  let userGold ="500"
-  let userRedGem ="700"
-  let userRedBall ="2"
-  let userCoupon ="245"
-  let boosterGold ="500"
-  let boosterRedGem ="400"
-  let boosterRedBall ="1"
-  let boosterCoupon ="145"  
-  let userGold1 ="500"
-  let userRedGem1 ="700"
-  let userRedBall1 ="2"
-  let userCoupon1 ="245"
-  let boosterGold1 ="500"
-  let boosterRedGem1 ="400"
-  let boosterRedBall1 ="1"
-  let boosterCoupon1 ="145"
-  let userBeginRank = "Gold"
-  let userDesiredRank = "Conqueror"
-  let userAfterBoost = "Bronze"
-  let userTimeSpend =" ล่าช้ากว่ากำหนด 1 วัน"
-  let boosterBeginRank = "Gold"
-  let boosterDesiredRank = "Conqueror"
-  let boosterAfterBoost = "Bronze"
-  let boosterTimeSpend =" ล่าช้ากว่ากำหนด 1 วัน"
-  let userContact = "IncognitoMan"
-  let boosterContact = "godIsGod"
-  let userTelephone = "0123456789"
-  let userEmail = "user@gmail.com"
-  let userFacebook ="IncognitoMan"
-  let userLineID = "@supersecret"
-  let boosterTelephone = "9876543210"
-  let boosterEmail = "booster@gmail.com"
-  let boosterFacebook ="god"
-  let boosterLineID = "@sgodIn"
+function Reported_booster_detailed (){
+  const { id } = useParams();
+  const {eid} = useParams();
+
+  const [data, setData] = useState({});
+  const [employerData, setEmployerData] = useState([]);
+  const [userData, setUserData] = useState(null);
+
+
+
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:3333/report/admin-Boosting-Confirmtaion');
+        setData(response.data[id]);
+        
+      } catch (error) {
+        console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const handleRejectButtonClick = () => {
+    axios.patch('http://localhost:3333/report/set_report_order_boost_status',{
+      "boostingID": data.boostingID, 
+      "status" : "Completed"}).then(() => {
+        console.log('Order status updated successfully');
+      })
+      .catch((error) => {
+        console.error('Error updating order status', error);
+      });
+
+    window.location.href = `/reported_booster`;
+  };
+
+  const handleApproveButtonClick = () => {
+    axios.patch('http://localhost:3333/report/set_report_order_boost_status_advance',{
+      "boostingID": data.boostingID, 
+      "status" : "Reported",
+      "boid" : data.boid}).then(() => {
+        console.log('Order status updated successfully');
+      })
+      .catch((error) => {
+        console.error('Error updating order status', error);
+      });
+
+    window.location.href = `/reported_booster`;
+  };
+
+  console.log(data);
+
   return (
     <div class="home-container" id="home-container">
       <div class="full-container sticky-left">
@@ -92,10 +101,10 @@ const reported_booster_detailed = () => {
           <div class="reported_container ">
             <div class="pack01">
               <Link to="/reported_booster_detailed" style={{al:"center",color:"grey", textDecorationLine:"none", width:"min-content"}}>
-                <CardProfile style ={{width:"100vh"}}
+                {/* <CardProfile style ={{width:"100vh"}}
               imageUrl={ImageUrl}
               productName={ProductName} status={Status} seller={Seller} price={Price} >
-                </CardProfile>
+                </CardProfile> */}
               </Link>
               </div>
 
@@ -108,12 +117,9 @@ const reported_booster_detailed = () => {
                   style={{ margin: "0vh 0vh 3vh " }}
                 >
                   <h6>user</h6>
-                  <h6>booster</h6>
                 </div>
                 <button2 style={{ display: "flex" }}>
-                  <ImgModal src={userBeginImg}></ImgModal>
-
-                  <ImgModal src={boosterBeginImg}></ImgModal>
+                  <ImgModal src={data.start_pic}></ImgModal>
                 </button2>
                 <h3>รูปหลังเริ่มงาน</h3>
                 <div
@@ -121,34 +127,27 @@ const reported_booster_detailed = () => {
                   style={{ margin: "0vh 0vh 3vh" }}
                 >
                   <h6>user</h6>
-                  <h6>booster</h6>
                 </div>
                 <button2 style={{ display: "flex" }}>
-                  <ImgModal src={userEndImg}></ImgModal>
-
-                  <ImgModal src={boosterEndImg}></ImgModal>
+                  <ImgModal src={data.after_pic}></ImgModal>
                 </button2>
                 <div></div>
               </div>
               <div class="booster_data_container">
                 <div
                   class="text_row_adjust"
-                  style={{ padding: "0vh 5vh 0vh 5vh" }}
+                  style={{ justifyContent: "flex-start" }}
                 >
                   <h6>UID</h6>
-                  <h6>เวลา</h6>
                 </div>
                 <div class="one_row_adjust">
-                  <div class="small_box">{userID}</div>
-                  <div class="small_box">{date}</div>
+                  <div class="small_box">{data.uid}</div>
                 </div>
                 <div
                   class="half_row_adjust "
                   style={{ justifyContent: "flex-start" }}
                 >
                   <h4>ทรัพยากรก่อนเริ่มงาน</h4>
-                  <div class="tiny_box user">user</div>
-                  <div class="tiny_box booster">booster</div>
                 </div>
                 <div class="text_row_adjust ">
                   <h6>ทอง</h6>
@@ -157,27 +156,13 @@ const reported_booster_detailed = () => {
                   <h6>คูปอง</h6>
                 </div>
                 <div class="one_row_adjust">
-                  <div class="small_box user gold">{userGold}</div>
-                  <div class="small_box user gem">{userRedGem}</div>
-                  <div class="small_box user red-gem">{userRedBall}</div>
-                  <div class="small_box user coupon">{userCoupon}</div>
+                  <div class="small_box user gold">{data.before_gold}</div>
+                  <div class="small_box user gem">{data.before_diamond}</div>
+                  <div class="small_box user red-gem">{data.before_marble}</div>
+                  <div class="small_box user coupon">{data.before_coupon}</div>
                 </div>
 
-                <div class="text_row_adjust ">
-                  <h6>ทอง</h6>
-                  <h6>เพชรแดง</h6>
-                  <h6>ลูกแก้ว</h6>
-                  <h6>คูปอง</h6>
-                </div>
 
-                <div class="one_row_adjust">
-                  <div class="small_box booster gold">{boosterGold}</div>
-                  <div class="small_box booster gem">{boosterRedGem}</div>
-                  <div class="small_box booster red-gem">{boosterRedBall}
-
-                  </div>
-                  <div class="small_box booster coupon">{boosterCoupon}</div>
-                </div>
                 <div
                   class="half_row_adjust "
                   style={{ justifyContent: "flex-start" }}
@@ -191,23 +176,10 @@ const reported_booster_detailed = () => {
                   <h6>คูปอง</h6>
                 </div>
                 <div class="one_row_adjust">
-                  <div class="small_box user gold">{userGold1}</div>
-                  <div class="small_box user gem">{userRedGem1}</div>
-                  <div class="small_box user red-gem">{userRedBall1}</div>
-                  <div class="small_box user coupon">{userCoupon1}</div>
-                </div>
-
-                <div class="text_row_adjust ">
-                  <h6>ทอง</h6>
-                  <h6>เพชรแดง</h6>
-                  <h6>ลูกแก้ว</h6>
-                  <h6>คูปอง</h6>
-                </div>
-                <div class="one_row_adjust">
-                  <div class="small_box booster gold">{boosterGold1}</div>
-                  <div class="small_box booster gem">{boosterRedGem1}</div>
-                  <div class="small_box booster red-gem">{boosterRedBall1}</div>
-                  <div class="small_box booster coupon">{boosterCoupon1}</div>
+                  <div class="small_box user gold">{data.after_gold}</div>
+                  <div class="small_box user gem">{data.after_diamond}</div>
+                  <div class="small_box user red-gem">{data.after_marble}</div>
+                  <div class="small_box user coupon">{data.after_coupon}</div>
                 </div>
 
                 <div
@@ -219,33 +191,23 @@ const reported_booster_detailed = () => {
                 <div class="text_row_adjust pack ">
                   <h6>แรงก์ที่เริ่ม</h6>
                   <h6>แรงก์ที่ต้องการ</h6>
-                  <h6>แรงก์หลังจบงาน</h6>
-                  <h6>ระยะเวลาที่ใช้</h6>
                 </div>
                 <div class="one_row_adjust zip">
-                  <div class="small_box user">{userBeginRank}</div>
-                  <div class="small_box user">{userDesiredRank}</div>
-                  <div class="small_box user">{userAfterBoost}</div>
-                  <div class="small_box user little-font">{userTimeSpend}</div>
+                  <div class="small_box user">{data.before_tier}</div>
+                  <div class="small_box user">{data.after_tier}</div>
                 </div>
 
-                <div class="one_row_adjust zip">
-                  <div class="small_box booster">{boosterBeginRank}</div>
-                  <div class="small_box booster">{boosterDesiredRank}</div>
-                  <div class="small_box booster">{boosterAfterBoost}</div>
-                  <div class="small_box booster little-font">{boosterTimeSpend}</div>
-                </div>
                 <div class="half_row_adjust">
-                  <h4>Buyer_Contact({userContact})</h4>
+                  <h4>Employer Contact({data.e_user_name})</h4>
                 </div>
-                <div class="text_row_adjust pack1 ">
+                <div class="text_row_adjust pack2 ">
                   <h6>เบอร์โทร</h6>
 
                   <h6>email</h6>
                 </div>
-                <div class="one_row_adjust">
-                  <div class="normal_box">{userTelephone}</div>
-                  <div class="normal_box">{userEmail}</div>
+                <div class="one_row_adjust zip">
+                  <div class="small_box user">{data.e_con_num}</div>
+                  <div class="small_box user">{data.e_user_email}</div>
                 </div>
                 <div class="text_row_adjust pack2 ">
                   <h6>Facebook(Optional)</h6>
@@ -253,11 +215,11 @@ const reported_booster_detailed = () => {
                   <h6>Line(Optioanl)</h6>
                 </div>
                 <div class="one_row_adjust zip">
-                  <div class="small_box">{userFacebook}</div>
-                  <div class="small_box">{userLineID}</div>
+                  <div class="small_box">{data.facebook}</div>
+                  <div class="small_box">{data.line}</div>
                 </div>
                 <div class="half_row_adjust">
-                  <h4>Seller_Contact({boosterContact})</h4>
+                  <h4>Seller_Contact({data.bo_user_name})</h4>
                 </div>
                 <div class="text_row_adjust pack1 ">
                   <h6>เบอร์โทร</h6>
@@ -265,20 +227,8 @@ const reported_booster_detailed = () => {
                   <h6>email</h6>
                 </div>
                 <div class="one_row_adjust">
-                  <div class="normal_box ">{boosterTelephone}</div>
-                  <div class="normal_box">{boosterEmail}</div>
-                </div>
-                <div class="text_row_adjust pack2 ">
-                  <h6>Facebook(Optional)</h6>
-
-                  <h6>Line(Optioanl)</h6>
-                </div>
-                <div class="one_row_adjust zip">
-                  <div class="small_box">
-                    <h1></h1>
-                    {boosterFacebook}
-                  </div>
-                  <div class="small_box ">{boosterLineID}</div>
+                  <div class="normal_box ">{data.bo_con_num}</div>
+                  <div class="normal_box">{data.bo_user_name}</div>
                 </div>
                 <div
                   class="three_row_adjust"
@@ -289,17 +239,14 @@ const reported_booster_detailed = () => {
                       backgroundColor: "red",
                       border: "2px solid rgb(237,237,237)",
                     }}
+                    onClick={handleRejectButtonClick}
                   >
-                  <Link to="/reported_booster" style={{color:"black", textDecorationLine:"none"}}>
                   <h3>Reject</h3>
-              </Link>
                   </button>
-                  <button style={{ border: "2px solid rgb(237,237,237)" }}>
-                  <Link to="/reported_booster" style={{color:"black", textDecorationLine:"none"}}>
+                  <button style={{ border: "2px solid rgb(237,237,237)" }} onClick={handleApproveButtonClick}>
                   <h3>Approve</h3>
-              </Link>
-                    
                   </button>
+                  
                 </div>
               </div>
             </div>
@@ -310,4 +257,4 @@ const reported_booster_detailed = () => {
   );
 };
 
-export default reported_booster_detailed;
+export default Reported_booster_detailed;

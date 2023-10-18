@@ -1,6 +1,124 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 function UserReport() {      
+    const {boostingID} = useParams();
+    const [startPic, setStartPic] = useState('');
+    const [afterPic, setAfterPic] = useState('');
+    const {userID} = useParams(); //noinput
+    const [beforeTier, setBeforeTier] = useState('');
+    const [beforeGold, setBeforeGold] = useState('');
+    const [beforeDiamond, setBeforeDiamond] = useState('');
+    const [beforeMarble, setBeforeMarble] = useState('');
+    const [beforeCoupon, setBeforeCoupon] = useState('');
+    const [afterTier, setAfterTier] = useState('');
+    const [afterGold, setAfterGold] = useState('');
+    const [afterDiamond, setAfterDiamond] = useState('');
+    const [afterMarble, setAfterMarble] = useState('');
+    const [afterCoupon, setAfterCoupon] = useState('');
+    const [facebook, setFacebook] = useState('');
+    const [line, setLine] = useState('');
+    const [side, setSide] = useState(''); //noinput
+    const [datetime, setDatetime] = useState('');
+
+    const handleImageUpload = (e) => {
+      const link = e.target.value; // รับลิงค์รูปภาพ
+      setStartPic(link);
+    };
+
+    const handleImageUpload1 = (e) => {
+      const link = e.target.value; // รับลิงค์รูปภาพ
+      setAfterPic(link);
+    };
+
+    const handleDateTimeChange = (e) => {
+      setDatetime(e.target.value); // บันทึกรายละเอียด
+    };
+
+    const handlebeforeTierChange = (e) => {
+      setBeforeTier(e.target.value);
+    }
+    const handlebeforeGoldChange = (e) => {
+      setBeforeGold(e.target.value);
+    }
+    const handlebeforeDiamondChange = (e) => {
+      setBeforeDiamond(e.target.value);
+    }
+    const handlebeforeMarbleChange = (e) => {
+      setBeforeMarble(e.target.value);
+    }
+    const handlebeforeCouponChange = (e) => {
+      setBeforeCoupon(e.target.value);
+    }
+    const handleafterGoldChange = (e) => {
+      setAfterGold(e.target.value);
+    }
+    const handleafterDiamondChange = (e) => {
+      setAfterDiamond(e.target.value);
+    }
+    const handleafterMarbleChange = (e) => {
+      setAfterMarble(e.target.value);
+    }
+    const handleafterCouponChange = (e) => {
+      setAfterCoupon(e.target.value);
+    }
+    const handlefacebookChange = (e) => {
+      setFacebook(e.target.value);
+    }
+    const handlelineChange = (e) => {
+      setLine(e.target.value);
+    }
+    const handleafterTierChange = (e) => {
+      setAfterTier(e.target.value);
+    }
+
+    var token = localStorage.getItem('accessToken');
+
+    const config = {
+      headers: {
+        authorization: `${token}`, 
+      },
+    };
+    
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+  
+    const data = 
+    {
+      boostingID : boostingID ,
+      start_pic : startPic,
+      after_pic : afterPic,
+      uid : userID,
+      before_tier : beforeTier,
+      before_gold : beforeGold,
+      before_diamond : beforeDiamond,
+      before_marble : beforeMarble,
+      before_coupon : beforeCoupon,
+      after_tier : afterTier,
+      after_gold : afterGold,
+      after_diamond : afterDiamond,
+      after_marble : afterMarble,
+      after_coupon : afterCoupon,
+      facebook : facebook,
+      line : line,
+      side : "0",
+      datetime : datetime 
+    }
+    console.log(data);
+  
+    axios.patch('http://localhost:3333/buy/setBoostStatus',{"boostID": boostingID, "status" : "Pending"}).then(() => {
+          console.log('Order status updated successfully');
+        })
+        .catch((error) => {
+          console.error('Error updating order status', error);
+        });
+  
+      axios.post('http://localhost:3333/report/user-Report-Confirmation',data);
+      window.location.href = `/ownProfile/${userID}`
+    };
+
+
     const dropdownContainerStyle = {
         width: '9rem',
         height: '3rem',
@@ -196,34 +314,69 @@ const leftSideStyle = {
         color: 'black',
         backgroundColor: '#D9D9D9', // Color for large input 1
     };
+    const linkInput = {
+      width: '20rem',
+      height: '2rem',
+      borderRadius: '5px',
+      border: '1px solid gray',
+      fontSize: '1rem',
+      padding: '0.5rem',
+      color: 'black',
+      backgroundColor: '#D9D9D9',
+    };
+
+
 
 
   return (
     <div style={containerStyle}>
       {/* Left Side */}
       <div style={leftSideStyle}>
+        <p>แนบรูปก่อนเริ่มงาน</p>
+        <input
+          type="text"
+          style={{ ...linkInput }}
+          onChange={handleImageUpload}
+        />
+        <div style={{ height: '1rem' }}></div>
         <div style={squareWithTextStyle}>
-        <p style={textInsideSquareStyle}>รูปก่อนเริ่มงาน</p>
+          {startPic && (
+            <img
+              src={startPic}
+              alt="Uploaded Image"
+              style={{ maxWidth: '100%', maxHeight: '100%' }}
+            />
+          )}
         </div>
-        <div style={{ height: '5rem' }}></div>
+        <div style={{ height: '2rem' }}></div>
+        <p>แนบรูปหลังจบ</p>
+        <input
+          type="text"
+          style={{ ...linkInput }}
+          onChange={handleImageUpload1}
+        />
+        <div style={{ height: '1rem' }}></div>
         <div style={squareWithTextStyle}>
-        <p style={textInsideSquareStyle}>รูปหลังเริ่มงาน</p>
+          {afterPic&& (
+            <img
+              src={afterPic}
+              alt="Uploaded Image"
+              style={{ maxWidth: '100%', maxHeight: '100%' }}
+            />
+          )}
         </div>
       </div>
 
       {/* Right Side with Input Boxes */}
       <div style={rightSideStyle}>
         <div style={inputContainerStyle}>
-          <p style={titleStyle}>UID</p>
+          <p style={titleStyle}>DateTime</p>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <input
-              type="text"
-              style={{ ...inputStyle}}
-            />
             <div style={{ width: '1rem' }}></div>
             <input
               type="date"
               style={{ ...dateTimeInputStyle}}
+              onChange={handleDateTimeChange}
             />
           </div>
         </div>
@@ -235,6 +388,7 @@ const leftSideStyle = {
             <input
               type="text"
               style={{ ...smallInputStyle1}}
+              onChange={handlebeforeGoldChange}
             />
           </div>
           <div style={{ width: '1rem' }}></div>
@@ -243,6 +397,7 @@ const leftSideStyle = {
             <input
               type="text"
               style={{ ...smallInputStyle2}}
+              onChange={handlebeforeDiamondChange}
             />
           </div>
           <div style={{ width: '1rem' }}></div>
@@ -251,6 +406,7 @@ const leftSideStyle = {
             <input
               type="text"
               style={{ ...smallInputStyle3}}
+              onChange={handlebeforeMarbleChange}
             />
           </div>
           <div style={{ width: '1rem' }}></div>
@@ -259,6 +415,7 @@ const leftSideStyle = {
             <input
               type="text"
               style={{ ...smallInputStyle4}}
+              onChange={handlebeforeCouponChange}
             />
           </div>
           <div style={{ width: '1rem' }}></div>
@@ -270,6 +427,7 @@ const leftSideStyle = {
             <input
               type="text"
               style={{ ...smallInputStyle1}}
+              onChange={handleafterGoldChange}
             />
           </div>
           <div style={{ width: '1rem' }}></div>
@@ -278,6 +436,7 @@ const leftSideStyle = {
             <input
               type="text"
               style={{ ...smallInputStyle2}}
+              onChange={handleafterDiamondChange}
             />
           </div>
           <div style={{ width: '1rem' }}></div>
@@ -286,6 +445,7 @@ const leftSideStyle = {
             <input
               type="text"
               style={{ ...smallInputStyle3}}
+              onChange={handleafterMarbleChange}
             />
           </div>
           <div style={{ width: '1rem' }}></div>
@@ -294,25 +454,7 @@ const leftSideStyle = {
             <input
               type="text"
               style={{ ...smallInputStyle4}}
-            />
-          </div>
-        </div>
-
-        {/* Two Large Input Boxes in the Next Line */}
-        <div style={largeInputContainerStyle}>
-          <div style={inputContainerStyle}>
-          <p style={titleStyle}>Email</p>
-            <input
-              type="text"
-              style={{ ...largeInputStyle}}
-            />
-          </div>
-          <div style={{ width: '1rem' }}></div>
-          <div style={inputContainerStyle}>
-            <p style={titleStyle}>เบอร์โทรศัพท์</p>
-            <input
-              type="text"
-              style={{ ...largeInputStyle}}
+              onChange={handleafterCouponChange}
             />
           </div>
         </div>
@@ -323,6 +465,7 @@ const leftSideStyle = {
             <input
               type="text"
               style={{ ...largeInputStyleFacebook}}
+              onChange={handlefacebookChange}
             />
           </div>
           <div style={{ width: '1rem' }}></div>
@@ -331,6 +474,7 @@ const leftSideStyle = {
             <input
               type="text"
               style={{ ...largeInputStyleLine}}
+              onChange={handlelineChange}
             />
           </div>
         </div>
@@ -338,48 +482,7 @@ const leftSideStyle = {
         <div style={eightInputContainerStyle}>
           <div style={inputContainerStyle}>
             <p style={titleStyle}>แรงค์ที่เริ่ม</p>
-            <select style={dropdownContainerStyle}>
-            <option value="0">Bronze III</option>
-              <option value="1">Bronze II</option>
-              <option value="2">Bronze I</option>
-
-              {/* Silver */}
-              <option value="3">Silver III</option>
-              <option value="4">Silver II</option>
-              <option value="5">Silver I</option>
-
-              {/* Gold */}
-              <option value="6">Gold IV</option>
-              <option value="7">Gold III</option>
-              <option value="8">Gold II</option>
-              <option value="9">Gold I</option>
-
-              {/* Platinum */}
-              <option value="10">Platinum V</option>
-              <option value="11">Platinum IV</option>
-              <option value="12">Platinum III</option>
-              <option value="13">Platinum II</option>
-              <option value="14">Platinum I</option>
-
-              {/* Diamond */}
-              <option value="15">Diamond V</option>
-              <option value="16">Diamond IV</option>
-              <option value="17">Diamond III</option>
-              <option value="18">Diamond II</option>
-              <option value="19">Diamond I</option>
-
-              {/* Commander */}
-              <option value="20">Commander V</option>
-              <option value="21">Commander IV</option>
-              <option value="22">Commander III</option>
-              <option value="23">Commander II</option>
-              <option value="24">Commander I</option>
-            </select>
-          </div>
-          <div style={{ width: '1rem' }}></div>
-          <div style={inputContainerStyle}>
-            <p style={titleStyle}>แรงค์ที่ต้องการ</p>
-            <select style={dropdownContainerStyle}>
+            <select style={dropdownContainerStyle} onChange={handlebeforeTierChange}>
             <option value="0">Bronze III</option>
               <option value="1">Bronze II</option>
               <option value="2">Bronze I</option>
@@ -420,7 +523,7 @@ const leftSideStyle = {
           <div style={{ width: '1rem' }}></div>
           <div style={inputContainerStyle}>
             <p style={titleStyle}>แรงค์หลังจบงาน</p>
-            <select style={dropdownContainerStyle}>
+            <select style={dropdownContainerStyle} onChange={handleafterTierChange}>
             <option value="0">Bronze III</option>
               <option value="1">Bronze II</option>
               <option value="2">Bronze I</option>
@@ -458,16 +561,8 @@ const leftSideStyle = {
               <option value="24">Commander I</option>
             </select>
           </div>
-          <div style={{ width: '1rem' }}></div>
-          <div style={inputContainerStyle}>
-            <p style={titleStyle}>เวลาที่ใช้</p>
-            <select style={dropdownContainerStyle}>
-                <option value="option1">ตรงตามเวลา</option>
-                <option value="option2">เกินเวลา</option>
-            </select>
-          </div>
         </div>
-        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1rem', marginLeft: 'auto' }}>
+        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1rem', marginLeft: 'auto' }} onClick={handleSubmit}>
             <button style={greenButtonStyle}>Submit</button>
         </div>
       </div>

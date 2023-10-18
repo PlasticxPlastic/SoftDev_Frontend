@@ -119,7 +119,6 @@ function SignInPage() {
         localStorage.setItem('accessToken', token);
         localStorage.setItem('userId', userID);
         // You can also save the accessToken and user data in the browser for authentication.
-
         window.location.href = `/ownProfile/${userID}`;
 
       } else {

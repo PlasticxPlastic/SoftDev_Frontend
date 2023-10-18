@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Card({ price, username, order_name, type }) {
+function CardBoost({ price, username, after_tier, before_tier, type }) {
   const cardStyle = {
     display: 'flex',
     flexDirection: 'row',
@@ -53,7 +53,7 @@ function Card({ price, username, order_name, type }) {
       <div style={leftSideStyle}>
         <div style={imageStyle}></div>
         <div style={{ width: '3rem' }}></div>
-        <p style={textBelowImageStyle}>ชื่อสินค้า : {order_name}</p>
+        <p style={textBelowImageStyle}>ผู้ว่าจ้าง: {username}</p>
       </div>
       <div style={rightSideStyle}>
       {price !== 0 ? (
@@ -66,7 +66,7 @@ function Card({ price, username, order_name, type }) {
 
         <div style={{ width: '10rem' }}></div>
         {price !== 0 ? (
-        <p style={usernameTextStyle}>คนขาย : {username}</p>
+        <p style={usernameTextStyle}>{before_tier} - {after_tier}</p>
         ) : (
           <p style={usernameTextStyle}></p>
         )}
@@ -75,4 +75,4 @@ function Card({ price, username, order_name, type }) {
   );
 }
 
-export default Card;
+export default CardBoost;

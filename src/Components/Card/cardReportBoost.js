@@ -1,17 +1,17 @@
 import React from 'react';
 
-function Card({ price, username, order_name, type }) {
+function CardBoost({ user_name, price, before_tier, after_tier }) {
   const cardStyle = {
     display: 'flex',
     flexDirection: 'row',
-    width: '80rem',
+    width: '70rem',
     height: '5rem',
     border: '1px solid #000',
     marginBottom: '1rem',
   };
 
   const leftSideStyle = {
-    flex: '30%',
+    flex: '70%',
     display: 'flex',
     alignItems: 'center',
   };
@@ -28,7 +28,7 @@ function Card({ price, username, order_name, type }) {
   };
 
   const rightSideStyle = {
-    flex: '70%',
+    flex: '30%',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-end',
@@ -53,26 +53,15 @@ function Card({ price, username, order_name, type }) {
       <div style={leftSideStyle}>
         <div style={imageStyle}></div>
         <div style={{ width: '3rem' }}></div>
-        <p style={textBelowImageStyle}>ชื่อสินค้า : {order_name}</p>
+        <p style={textBelowImageStyle}>ชื่อผู้ Boost : {user_name}</p>
+        <div style={{ width: '1rem' }}></div>
+        <p style={usernameTextStyle}>ราคา : {price}</p>
       </div>
       <div style={rightSideStyle}>
-      {price !== 0 ? (
-        <p style={priceTextStyle}>ราคา : {price} บาท</p>
-      ) : (
-        <p style={priceTextStyle}>
-          {type === 'Selling' || type === 'Buying' ? 'ประเภท : ซื้อขาย' : 'ประเภท : Boost'}
-        </p>
-      )}
-
-        <div style={{ width: '10rem' }}></div>
-        {price !== 0 ? (
-        <p style={usernameTextStyle}>คนขาย : {username}</p>
-        ) : (
-          <p style={usernameTextStyle}></p>
-        )}
+        <p style={priceTextStyle}>{before_tier} - {after_tier}</p>
       </div>
     </div>
   );
 }
 
-export default Card;
+export default CardBoost;

@@ -16,8 +16,8 @@ import BoosterForm from './pages/CreateOrderPage/booster';
 import MainShop from "./pages/MainshopPage/MainShop";
 import Reported_ID from "./pages/AdminPage/reported_ID";
 import Reported_ID_detailed from "./pages/AdminPage/reported_ID_detailed";
-import reported_booster from "./pages/AdminPage/reported_booster";
-import reported_booster_detail from "./pages/AdminPage/reported_booster_detailed";
+import Reported_booster from "./pages/AdminPage/reported_booster";
+import Reported_booster_detail from "./pages/AdminPage/reported_booster_detailed";
 import BoosterDetail from "./pages/ViewOrderPage/BoosterDetail";
 import ProfilePage from "./pages/ProfilePage/Profile";
 
@@ -33,7 +33,7 @@ function App() {
 
         
         <Route path="/BuyerReport/:userID/:orderID" element={<BuyerReport />} />
-        <Route path="/UserReport" element={<UserReport />} />
+        <Route path="/UserReport/:userID/:boostingID" element={<UserReport />} />
         <Route path="/BoosterReport" element={<BoosterReport />} />
         <Route path="/BoosterDetail" element={<BoosterDetail />} />
         <Route path="/profile/:userId" element={<ProfilePage/>} />
@@ -46,8 +46,8 @@ function App() {
 
         <Route path="/reported_ID" element={<Reported_ID/>} />
         <Route path="/reported_ID_detailed/:id" element={<Reported_ID_detailed/>} />
-        <Route path="/reported_booster_detailed" element={reported_booster_detail()} />
-        <Route path="/reported_booster" element={reported_booster()} />
+        <Route path="/reported_booster_detailed/:id/:eid" element={<Reported_booster_detail/>} />
+        <Route path="/reported_booster" element={<Reported_booster/>} />
       </Routes>
     </BrowserRouter>
   );
