@@ -6,7 +6,9 @@ import { useParams } from 'react-router-dom';
 
 
 function ProfilePage() {
-  const { userId } = useParams();
+  // const { userId } = useParams();
+  const urlParams = new URLSearchParams(window.location.search);
+  const userId = urlParams.get("id");
   const [currentState, setCurrentState] = useState('');
 
   const handleStateChange = (newState) => {

@@ -188,7 +188,13 @@ function BuyerReport() {
         <input
           type="text"
           style={{ ...linkInput }}
-          onChange={handleImageUpload}
+          onChange={(e) => {
+            // ตรวจสอบความยาวของข้อมูลที่ป้อน
+            if (e.target.value.length > 300) {
+              e.target.value = e.target.value.slice(0, 300);
+            }
+            handleImageUpload(e);
+          }}
         />
         <div style={{ height: '1rem' }}></div>
         <div style={squareWithTextStyle}>
@@ -213,7 +219,13 @@ function BuyerReport() {
                 height: '10rem',
                 resize: 'vertical',
               }}
-              onChange={handleInputChange}
+              onChange={(e) => {
+                // ตรวจสอบความยาวของข้อมูลที่ป้อน
+                if (e.target.value.length > 700) {
+                  e.target.value = e.target.value.slice(0, 700);
+                }
+                handleInputChange(e);
+              }}
             />
           </div>
         </div>
@@ -222,10 +234,16 @@ function BuyerReport() {
           <div style={inputContainerStyle}>
             <p style={titleStyle}>Facebook</p>
             <input
-              type="text"
-              style={{ ...largeInputStyleFacebook }}
-              onChange={handleFacebookChange}
-            />
+            type="text"
+            style={{ ...largeInputStyleFacebook }}
+            onChange={(e) => {
+              // ตรวจสอบความยาวของข้อมูลที่ป้อน
+              if (e.target.value.length > 30) {
+                e.target.value = e.target.value.slice(0, 30);
+              }
+              handleFacebookChange(e);
+            }}
+          />
           </div>
           <div style={{ width: '1rem' }}></div>
           <div style={inputContainerStyle}>
@@ -233,7 +251,13 @@ function BuyerReport() {
             <input
               type="text"
               style={{ ...largeInputStyleLine }}
-              onChange={handleLineChange}
+              onChange={(e) => {
+                if (e.target.value.length > 30) {
+                  e.target.value = e.target.value.slice(0, 30);
+                }
+                // บันทึกค่าที่ได้เปลี่ยนแปลง
+                handleLineChange(e);
+              }}
             />
           </div>
         </div>
