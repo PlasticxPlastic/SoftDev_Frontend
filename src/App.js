@@ -21,6 +21,7 @@ import Reported_booster_detail from "./pages/AdminPage/reported_booster_detailed
 import BoosterDetail from "./pages/ViewOrderPage/BoosterDetail";
 import ProfilePage from "./pages/ProfilePage/Profile";
 import ReviewPage from './pages/OwnProfilePage/ReviewPage'; // นำเข้า ReviewPage
+import CheckoutOrder from "./pages/ViewOrderPage/CheckoutOrder";
 
 
 function App() {
@@ -37,11 +38,14 @@ function App() {
         <Route path="/CreateSellOrder" element={<CreateSellOrder />} />
         <Route path="/BoosterForm" element={<BoosterForm />} />
         <Route path="/MainShop" element={<MainShop/>} />
+        <Route path="/CheckoutOrder" element={<CheckoutOrder/>} />
 
         {/* OHMM */}
 
-        <Route path="/profile/:userId" element={<ProfilePage/>} />
+        <Route path="/profile" element={<ProfilePage/>} />
         <Route path="/ownProfile/:userId" element={<OwnProfilePage/>} /> 
+
+        
         <Route path="/BuyerReport/:userID/:orderID" element={<BuyerReport />} />
         <Route path="/UserReport/:userID/:boostingID" element={<UserReport />} />
         <Route path="/reported_ID" element={<Reported_ID/>} />

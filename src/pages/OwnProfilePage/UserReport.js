@@ -33,8 +33,17 @@ function UserReport() {
     };
 
     const handleDateTimeChange = (e) => {
-      setDatetime(e.target.value); // บันทึกรายละเอียด
+      const selectedDate = new Date(e.target.value); // แปลงวันที่ที่ผู้ใช้เลือกในอินพุตให้อยู่ในรูปแบบของวัตถุ Date
+      const currentDate = new Date(); // วันที่ปัจจุบัน
+      const minDate = new Date();
+      minDate.setDate(minDate.getDate() - 14); // วันที่อยู่ห่างจากวันที่ปัจจุบัน 14 วัน
+      // ตรวจสอบว่าวันที่ที่ผู้ใช้เลือกอยู่ในช่วงเวลาที่คุณกำหนดหรือไม่
+      if (selectedDate <= minDate || selectedDate >= currentDate) {
+        alert("กรุณาไม่เลือกวันที่ในอนาคตหรือย้อนหลังเกิน 14 วัน");
+        e.target.value = ""; // ล้างค่าในอินพุตหลังจาก alert
+      }
     };
+    
 
     const handlebeforeTierChange = (e) => {
       setBeforeTier(e.target.value);
@@ -208,6 +217,63 @@ const leftSideStyle = {
         outline: 'none',
     };
 
+    function getTierLabel(tierValue) {
+      switch (tierValue) {
+        case 0:
+          return "Bronze III";
+        case 1:
+          return "Bronze II";
+        case 2:
+          return "Bronze I";
+        case 3:
+          return "Silver III";
+        case 4:
+          return "Silver II";
+        case 5:
+          return "Silver I";
+        case 6:
+          return "Gold IV";
+        case 7:
+          return "Gold III";
+        case 8:
+          return "Gold II";
+        case 9:
+          return "Gold I";
+        case 10:
+          return "Platinum V";
+        case 11:
+          return "Platinum IV";
+        case 12:
+          return "Platinum III";
+        case 13:
+          return "Platinum II";
+        case 14:
+          return "Platinum I";
+        case 15:
+          return "Diamond V";
+        case 16:
+          return "Diamond IV";
+        case 17:
+          return "Diamond III";
+        case 18:
+          return "Diamond II";
+        case 19:
+          return "Diamond I";
+        case 20:
+          return "Commander V";
+        case 21:
+          return "Commander IV";
+        case 22:
+          return "Commander III";
+        case 23:
+          return "Commander II";
+        case 24:
+          return "Commander I";
+        default:
+          return "";
+      }
+    }
+    
     const titleStyle = {
         color: 'black',
         marginBottom: '0.5rem',
@@ -386,7 +452,7 @@ const leftSideStyle = {
         <div style={inputContainerStyle}>
             <p style={titleStyle}>ทองก่อนเริ่มงาน</p>
             <input
-              type="text"
+              type="number"
               style={{ ...smallInputStyle1}}
               onChange={handlebeforeGoldChange}
             />
@@ -395,7 +461,7 @@ const leftSideStyle = {
           <div style={inputContainerStyle}>
             <p style={titleStyle}>เพชรแดงก่อนเริ่มงาน</p>
             <input
-              type="text"
+              type="number"
               style={{ ...smallInputStyle2}}
               onChange={handlebeforeDiamondChange}
             />
@@ -404,7 +470,7 @@ const leftSideStyle = {
           <div style={inputContainerStyle}>
             <p style={titleStyle}>ลูกแก้วแดงก่อนเริ่มงาน</p>
             <input
-              type="text"
+              type="number"
               style={{ ...smallInputStyle3}}
               onChange={handlebeforeMarbleChange}
             />
@@ -413,7 +479,7 @@ const leftSideStyle = {
           <div style={inputContainerStyle}>
             <p style={titleStyle}>คูปองก่อนเริ่มงาน</p>
             <input
-              type="text"
+              type="number"
               style={{ ...smallInputStyle4}}
               onChange={handlebeforeCouponChange}
             />
@@ -425,7 +491,7 @@ const leftSideStyle = {
           <div style={inputContainerStyle}>
             <p style={titleStyle}>ทองหลังเริ่มงาน</p>
             <input
-              type="text"
+              type="number"
               style={{ ...smallInputStyle1}}
               onChange={handleafterGoldChange}
             />
@@ -434,7 +500,7 @@ const leftSideStyle = {
           <div style={inputContainerStyle}>
             <p style={titleStyle}>เพชรแดงหลังเริ่มงาน</p>
             <input
-              type="text"
+              type="number"
               style={{ ...smallInputStyle2}}
               onChange={handleafterDiamondChange}
             />
@@ -443,7 +509,7 @@ const leftSideStyle = {
           <div style={inputContainerStyle}>
             <p style={titleStyle}>ลูกแก้วแดงหลังเริ่มงาน</p>
             <input
-              type="text"
+              type="number"
               style={{ ...smallInputStyle3}}
               onChange={handleafterMarbleChange}
             />
@@ -452,7 +518,7 @@ const leftSideStyle = {
           <div style={inputContainerStyle}>
             <p style={titleStyle}>คูปองหลังเริ่มงาน</p>
             <input
-              type="text"
+              type="number"
               style={{ ...smallInputStyle4}}
               onChange={handleafterCouponChange}
             />
@@ -462,19 +528,31 @@ const leftSideStyle = {
         <div style={largeInputContainerStyle}>
           <div style={inputContainerStyle}>
           <p style={titleStyle}>Facebook</p>
-            <input
-              type="text"
-              style={{ ...largeInputStyleFacebook}}
-              onChange={handlefacebookChange}
-            />
+          <input
+            type="text"
+            style={{ ...largeInputStyleFacebook }}
+            onChange={(e) => {
+              // ตรวจสอบความยาวของข้อมูลที่ป้อน
+              if (e.target.value.length > 30) {
+                e.target.value = e.target.value.slice(0, 30);
+              }
+              handlefacebookChange(e);
+            }}
+          />
           </div>
           <div style={{ width: '1rem' }}></div>
           <div style={inputContainerStyle}>
             <p style={titleStyle}>Line</p>
             <input
               type="text"
-              style={{ ...largeInputStyleLine}}
-              onChange={handlelineChange}
+              style={{ ...largeInputStyleLine }}
+              onChange={(e) => {
+                if (e.target.value.length > 30) {
+                  e.target.value = e.target.value.slice(0, 30);
+                }
+                // บันทึกค่าที่ได้เปลี่ยนแปลง
+                handlelineChange(e);
+              }}
             />
           </div>
         </div>
@@ -524,42 +602,16 @@ const leftSideStyle = {
           <div style={inputContainerStyle}>
             <p style={titleStyle}>แรงค์หลังจบงาน</p>
             <select style={dropdownContainerStyle} onChange={handleafterTierChange}>
-            <option value="0">Bronze III</option>
-              <option value="1">Bronze II</option>
-              <option value="2">Bronze I</option>
+              {Array.from({ length: 25 }, (_, i) => {
+                const tierValue = i;
+                return tierValue >= beforeTier ? (
+                  <option key={tierValue} value={tierValue}>
+                    {getTierLabel(tierValue)}
+                  </option>
+                ) : null;
+              })}
+            </select>;
 
-              {/* Silver */}
-              <option value="3">Silver III</option>
-              <option value="4">Silver II</option>
-              <option value="5">Silver I</option>
-
-              {/* Gold */}
-              <option value="6">Gold IV</option>
-              <option value="7">Gold III</option>
-              <option value="8">Gold II</option>
-              <option value="9">Gold I</option>
-
-              {/* Platinum */}
-              <option value="10">Platinum V</option>
-              <option value="11">Platinum IV</option>
-              <option value="12">Platinum III</option>
-              <option value="13">Platinum II</option>
-              <option value="14">Platinum I</option>
-
-              {/* Diamond */}
-              <option value="15">Diamond V</option>
-              <option value="16">Diamond IV</option>
-              <option value="17">Diamond III</option>
-              <option value="18">Diamond II</option>
-              <option value="19">Diamond I</option>
-
-              {/* Commander */}
-              <option value="20">Commander V</option>
-              <option value="21">Commander IV</option>
-              <option value="22">Commander III</option>
-              <option value="23">Commander II</option>
-              <option value="24">Commander I</option>
-            </select>
           </div>
         </div>
         <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1rem', marginLeft: 'auto' }} onClick={handleSubmit}>

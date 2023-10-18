@@ -98,24 +98,33 @@ function Card({ price, seller_user_name
 
   const handleGreenButtonClick = () => {
     if (isBuyConfirm) {
-      Axios.patch('http://localhost:3333/buy/setOrderStatus',{"orderID": orderID, "status" : "Completed"},config).then(() => {
-          console.log('Order status updated successfully');
-        })
-        .catch((error) => {
-          console.error('Error updating order status', error);
-        });
+      const isConfirmed = window.confirm("โปรดอ่านก่อนหากกดปุ่มยืนยันแล้วคุณจะไม่สามารถทำเรื่องขอเงินคืนได้ หากเกิดปัญหาอะไรขึ้นในอนาคตถือว่าทางเราได้ทำหน้าที่ช่วยให้สำเร็จการขายเรียบร้อยแล้วขอให้แน่ใจว่าได้รับไอดี แล้วจริงๆจึงค่อยกดยืนยันหากอ่านทั้งหมดแล้วตกลงตามเงื่อนไขดังกล่าวขอให้กดยืนยันเพื่อดำเนินการต่อ");
+      if (isConfirmed) {
+        Axios.patch('http://localhost:3333/buy/setOrderStatus', {"orderID": orderID, "status": "Completed"}, config)
+          .then(() => {
+            console.log('Order status updated successfully');
+          })
+          .catch((error) => {
+            console.error('Error updating order status', error);
+          });
         window.location.href = `/ReviewPage/${userID}`;
+      }
     } else if (isBoostConfirm) {
+      // ทำงานเมื่อปุ่มสีเขียวใน BoostConfirm ถูกคลิก
     }
   };
-
+  
   const handleRedButtonClick = () => {
     if (isBuyConfirm) {
-        window.location.href = `/BuyerReport/${userID}/${orderID}`;
+        const isConfirmed = window.confirm("โปรดอ่านก่อนแน่ใจหรือไม่ว่าจะกดแจ้งปัญหาการโดนโกงในกรณีที่เกิดการโดนโกงขึ้นจริงขอให้กรอกข้อมูลรายละเอียดในหน้าถัดไปหลังจากกดยืนยันหลังจากนั้นโปรดรอ adminติดต่อไปสอบถามข้อมูล เพิ่มเติม    1 ) หากเกิดการโกงขึ้นจริง คุณจะได้รับเงินค่าไอดีคืนพร้อมค่าทำขวัญเป็นจำนวนเงิน 20% ของราคาไอดีดังกล่าว     2 )หากการโดนโกงไม่ได้เกิดขึ้นจริงแต่เป็นการแจ้งเหตุเท็จทางเราจะทำการระงับบัญชีผู้ใช้ของคุณเป็นการลงโทษหากอ่านทั้งหมดแล้วตกลงตามเงื่อนไขดังกล่าวขอให้กดยืนยัน");
+        if (isConfirmed) {
+          window.location.href = `/BuyerReport/${userID}/${orderID}`;
+        }
     } else if (isBoostConfirm) {
       // ทำงานเมื่อปุ่มสีแดงใน BoostConfirm ถูกคลิก
     }
   };
+  
 
   return (
     <div style={cardStyle}>

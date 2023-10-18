@@ -53,10 +53,21 @@ function OrderDetail() {
     height: '3rem',
     borderRadius: '10px',
     backgroundColor: '#D9D9D9',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    display: 'flex', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
   };
+  
+  const smallTextBoxStyle = {
+    width: '10rem',
+    height: '2rem',
+    backgroundColor: '#D9D9D9',
+    borderRadius: '10px',
+    display: 'flex', // เพิ่ม display: 'flex' เพื่อให้ส่วนหน้าข้อความเป็น Flex Container
+    justifyContent: 'center', // จัดให้เนื้อหาอยู่ตรงกลางแนวแกนนอน
+    alignItems: 'center', // จัดให้เนื้อหาอยู่ตรงกลางแนวแกนตั้ง
+  };
+  
 
   const titleStyle = {
     color: 'black',
@@ -74,18 +85,15 @@ function OrderDetail() {
     justifyContent: 'space-between',
   };
 
-  const smallTextBoxStyle = {
-    width: '10rem',
-    height: '2rem',
-    backgroundColor: '#D9D9D9',
-    borderRadius: '10px',
-  };
 
   const smallTextBoxStyleGold = {
     width: '10rem',
     height: '2rem',
     backgroundColor: 'rgba(250, 180, 10, 0.62)',
     borderRadius: '10px',
+    display: 'flex', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
   };
 
   const smallTextBoxStyleRedBeads = {
@@ -93,6 +101,9 @@ function OrderDetail() {
     height: '2rem',
     backgroundColor: 'rgba(247, 0, 0, 0.74)',
     borderRadius: '10px',
+    display: 'flex', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
   };
 
   const smallTextBoxStyleRedGems = {
@@ -100,6 +111,9 @@ function OrderDetail() {
     height: '2rem',
     backgroundColor: 'rgba(247, 0, 0, 0.63)',
     borderRadius: '10px',
+    display: 'flex', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
   };
 
   const smallTextBoxStyleCoupon = {
@@ -107,6 +121,9 @@ function OrderDetail() {
     height: '2rem',
     backgroundColor: 'rgba(24, 119, 242, 0.78)',
     borderRadius: '10px',
+    display: 'flex', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
   };
 
   const smallTextBoxTitleStyle = {

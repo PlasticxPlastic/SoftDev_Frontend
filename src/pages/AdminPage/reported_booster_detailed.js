@@ -228,7 +228,7 @@ function Reported_booster_detailed (){
                 </div>
                 <div class="one_row_adjust">
                   <div class="normal_box ">{data.bo_con_num}</div>
-                  <div class="normal_box">{data.bo_user_name}</div>
+                  <div class="normal_box">{data.bo_user_email}</div>
                 </div>
                 <div
                   class="three_row_adjust"
